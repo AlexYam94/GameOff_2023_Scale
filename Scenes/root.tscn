@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://i1qwhe5h610m"]
+
+[ext_resource type="Script" path="res://Scripts/Arm.gd" id="2_f4hu7"]
+[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/weight.tscn" id="5_p7brq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qrspb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88ejq"]
+size = Vector2(16, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_608tq"]
+size = Vector2(2, 11)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0dtt"]
+size = Vector2(24, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpryf"]
+size = Vector2(0.2, 0.9)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2o0b"]
+rough = true
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4eost"]
+radius = 0.1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7eebm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avnwb"]
+size = Vector2(13, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62sd6"]
+size = Vector2(164.55, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3kyc"]
+size = Vector2(8.725, 121)
+
+[node name="Root" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Left Pan" type="RigidBody2D" parent="Node2D"]
+position = Vector2(-23, 9)
+collision_layer = 6
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_qrspb")
+continuous_cd = 1
+max_contacts_reported = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Left Pan"]
+shape = SubResource("RectangleShape2D_88ejq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Left Pan"]
+position = Vector2(-9, -4)
+shape = SubResource("RectangleShape2D_608tq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Left Pan"]
+position = Vector2(9, -4)
+shape = SubResource("RectangleShape2D_608tq")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Node2D"]
+position = Vector2(-23, -15)
+node_a = NodePath("../Arm")
+node_b = NodePath("../Left Pan")
+softness = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/PinJoint2D2"]
+
+[node name="Arm" type="RigidBody2D" parent="Node2D"]
+position = Vector2(0, -17)
+mass = 10.0
+center_of_mass_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_ap8b7")
+gravity_scale = 0.0
+continuous_cd = 1
+max_contacts_reported = 3
+script = ExtResource("2_f4hu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Arm"]
+position = Vector2(-12.1, 0)
+shape = SubResource("RectangleShape2D_u0dtt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Arm"]
+position = Vector2(12.1, 0)
+shape = SubResource("RectangleShape2D_u0dtt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Arm"]
+position = Vector2(0, 0.55)
+shape = SubResource("RectangleShape2D_bpryf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Arm"]
+position = Vector2(0, -0.55)
+shape = SubResource("RectangleShape2D_bpryf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(0, -17)
+physics_material_override = SubResource("PhysicsMaterial_q2o0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+shape = SubResource("CircleShape2D_4eost")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D"]
+position = Vector2(23, -15)
+node_a = NodePath("../Arm")
+node_b = NodePath("../Right Pan")
+disable_collision = false
+softness = 2.0
+
+[node name="Right Pan" type="RigidBody2D" parent="Node2D"]
+position = Vector2(23, 9)
+collision_layer = 6
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_7eebm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Right Pan"]
+shape = SubResource("RectangleShape2D_avnwb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
+
+[node name="Weight" parent="." instance=ExtResource("5_p7brq")]
+position = Vector2(47, -45)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Wall" type="RigidBody2D" parent="."]
+position = Vector2(0, 44)
+collision_layer = 6
+collision_mask = 6
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ap8b7")
+gravity_scale = 0.0
+continuous_cd = 1
+max_contacts_reported = 10
+freeze = true
+script = ExtResource("2_f4hu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_62sd6")
+
+[node name="Wall2" type="RigidBody2D" parent="."]
+position = Vector2(-86, -16)
+collision_layer = 6
+collision_mask = 6
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ap8b7")
+gravity_scale = 0.0
+continuous_cd = 1
+max_contacts_reported = 10
+freeze = true
+script = ExtResource("2_f4hu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_p3kyc")
+
+[node name="Wall3" type="RigidBody2D" parent="."]
+position = Vector2(87, -16)
+collision_layer = 6
+collision_mask = 6
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ap8b7")
+gravity_scale = 0.0
+continuous_cd = 1
+max_contacts_reported = 10
+freeze = true
+script = ExtResource("2_f4hu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_p3kyc")
