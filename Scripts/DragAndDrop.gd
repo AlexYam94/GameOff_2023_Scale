@@ -1,12 +1,20 @@
 extends RigidBody2D
 
 @export var force : float = 10000
+@export var stopDistance : float = 2
+@export var distanceDecayFactor : float = 200
+@export var velocityDecayValue : float = .5
+@export var nonFacingCursorFactor : float #make u turn, 90 degree turn faster
+
+@export var testSprite : Sprite2D
 
 signal clicked
 
-var held = false
+var held : bool = false
 
-var held_object = null
+var held_object : Object = null
+
+var anchorPoint : Vector2
 
 func _ready():
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -15,16 +23,28 @@ func _ready():
 func _physics_process(delta):
 	if held:
 		var mousePos = get_global_mouse_position()
-		var dir = mousePos - global_transform.origin
-		apply_central_force(dir * force * delta)
+		var distance = global_transform.origin.distance_to(mousePos)
+		if(distance > stopDistance):
+			var dir = mousePos - global_transform.origin
+			apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
+			var predictedPosition = global_position + linear_velocity
+			testSprite.look_at(predictedPosition)
+			var gbPos = global_position
+			if (mousePos - predictedPosition) > (mousePos - global_position):
+				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)
+		else:
+			linear_velocity =  lerp(linear_velocity,Vector2.ZERO,velocityDecayValue)
+			
 
 func pickup():
 	if held:
 		return
+	gravity_scale = 0
 	held = true
 
 func drop(impulse=Vector2.ZERO):
 	if held:
+		gravity_scale = 1
 		#apply_central_impulse(impulse)
 		held = false
 
@@ -32,6 +52,7 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			clicked.emit(self)
+			anchorPoint = get_global_mouse_position()
 
 
 func _on_pickable_clicked(object):
