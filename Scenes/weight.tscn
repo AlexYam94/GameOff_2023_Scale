@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsyhmmvxevwih"]
+[gd_scene load_steps=5 format=3 uid="uid://dsyhmmvxevwih"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_tgghu"]
+[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="2_0kolw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -9,18 +10,29 @@ bounce = 0.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
 size = Vector2(10, 10)
 
-[node name="Weight" type="RigidBody2D" groups=["pickable"]]
+[node name="Weight" type="RigidBody2D" node_paths=PackedStringArray("testSprite") groups=["pickable"]]
 disable_mode = 2
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.3
 continuous_cd = 1
 max_contacts_reported = 10
+angular_damp = 30.606
 script = ExtResource("1_tgghu")
-force = 1000.0
+force = 3000.0
+stopDistance = 60.0
+distanceDecayFactor = 300.0
+velocityDecayValue = 1.0
+nonFacingCursorFactor = 1000.0
+testSprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3lujh")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(0.1, 0.01)
+texture = ExtResource("2_0kolw")
+offset = Vector2(50, 0)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
