@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var stopDistance : float = 2
 @export var distanceDecayFactor : float = 200
 @export var velocityDecayValue : float = .5
-@export var nonFacingCursorFactor : float #make u turn, 90 degree turn faster
+@export var nonFacingCursorFactor : float = 1
 
 @export var testSprite : Sprite2D
 
@@ -23,21 +23,23 @@ func _ready():
 func _physics_process(delta):
 	if held:
 		var mousePos = get_global_mouse_position()
-		var distance = global_transform.origin.distance_to(mousePos)
+		var distance = global_position.distance_to(mousePos)
 		if(distance > stopDistance):
-			var dir = (mousePos - global_transform.origin).normalized()
+			var dir = (mousePos - global_position).normalized()
 			apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 			var predictedPosition = global_position + linear_velocity
 			testSprite.look_at(predictedPosition)
 			var gbPos = global_position
 			var predictedDir = (mousePos - predictedPosition).normalized()
 			if(predictedDir != dir):
-				linear_velocity = linear_velocity/2
-				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)	
+				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)
 			else:
 				apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 		else:
-			linear_velocity =  lerp(linear_velocity,Vector2.ZERO,velocityDecayValue)
+			var newVelocity = lerp(linear_velocity,Vector2.ZERO,velocityDecayValue)
+			newVelocity.x = max(0, newVelocity.x)
+			newVelocity.y = max(0, newVelocity.y)
+			linear_velocity = newVelocity
 			
 
 func pickup():

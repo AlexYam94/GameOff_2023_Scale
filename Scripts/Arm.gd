@@ -33,6 +33,7 @@ func _process(delta):
 	if (countDownTimer <= 0):
 		#TODO
 		#Next level
+		#LevelLoader.loadNextLevel()
 		pass
 		
 	pass

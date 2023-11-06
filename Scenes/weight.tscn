@@ -21,11 +21,11 @@ continuous_cd = 1
 max_contacts_reported = 10
 angular_damp = 30.606
 script = ExtResource("1_tgghu")
-force = 1000.0
-stopDistance = 60.0
-distanceDecayFactor = 300.0
-velocityDecayValue = 1.0
-nonFacingCursorFactor = 1000.0
+force = 3000.0
+stopDistance = 100.0
+distanceDecayFactor = 40.0
+velocityDecayValue = 1.5
+nonFacingCursorFactor = 2.0
 testSprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
