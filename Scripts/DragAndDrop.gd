@@ -25,13 +25,17 @@ func _physics_process(delta):
 		var mousePos = get_global_mouse_position()
 		var distance = global_transform.origin.distance_to(mousePos)
 		if(distance > stopDistance):
-			var dir = mousePos - global_transform.origin
+			var dir = (mousePos - global_transform.origin).normalized()
 			apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 			var predictedPosition = global_position + linear_velocity
 			testSprite.look_at(predictedPosition)
 			var gbPos = global_position
-			if (mousePos - predictedPosition) > (mousePos - global_position):
-				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)
+			var predictedDir = (mousePos - predictedPosition).normalized()
+			if(predictedDir != dir):
+				linear_velocity = linear_velocity/2
+				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)	
+			else:
+				apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 		else:
 			linear_velocity =  lerp(linear_velocity,Vector2.ZERO,velocityDecayValue)
 			
