@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var countDownText : Label
 @export var countDownTime : float
 
-var initPos
+var initPos : Vector2
 var countDownTimer : float
 
 # Called when the node enters the scene tree for the first time.
