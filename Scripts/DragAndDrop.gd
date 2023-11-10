@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var distanceDecayFactor : float = 200
 @export var velocityDecayValue : float = .5
 @export var nonFacingCursorFactor : float = 1
+@export var collisionShape : CollisionShape2D
 
 @export var testSprite : Sprite2D
 
@@ -15,6 +16,8 @@ var held : bool = false
 var held_object : Object = null
 
 var anchorPoint : Vector2
+
+var pan : Pan
 
 func _ready():
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -53,6 +56,17 @@ func drop(impulse=Vector2.ZERO):
 		gravity_scale = 1
 		#apply_central_impulse(impulse)
 		held = false
+		
+func get_shape():
+	return collisionShape.shape
+
+func _on_body_entered(body):
+	#TODO:
+	#register obj to pan when obj in pan detect area
+	#get pan reference from other obj when collide with other obj
+	if(body is DragAndDrop):
+		pan = body.pan
+		pan.registerObj(self)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var detectGroup : String
 
 var totalWeight : float
+var registeredObjs = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,5 +21,8 @@ func _process(delta):
 		
 	print(totalWeight)
 
-func test():
-	print("pan")
+func registerObj(body):
+	registeredObjs.append(body)
+	
+func unregisterObj(body):
+	registeredObjs.erase(body)
