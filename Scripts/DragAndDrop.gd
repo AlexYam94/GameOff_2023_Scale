@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var velocityDecayValue : float = .5
 @export var nonFacingCursorFactor : float = 1
 @export var collisionShape : CollisionShape2D
+@export var contactEffect : PackedScene
 
 @export var testSprite : Sprite2D
 
@@ -67,6 +68,19 @@ func _on_body_entered(body):
 	if(body is DragAndDrop):
 		pan = body.pan
 		pan.registerObj(self)
+	#TODO:
+	#Play hit/smoke/dust effect
+	var shape = collisionShape.shape
+	var otherShape = body.get_shape()
+	var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
+	if(!contactsPoints):
+		pass
+	for point in contactsPoints:
+		print(point)
+		#TODO:
+		#Play effect on each point
+		var effect : Node2D = contactEffect.instantiate();
+		(effect as Node2D).global_position = point
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
