@@ -1,3 +1,4 @@
+class_name Pan
 extends RigidBody2D
 
 @export var detectArea : Area2D
@@ -17,12 +18,18 @@ func _process(delta):
 	for body in bodies:
 		if not body.is_in_group(detectGroup):
 			continue
-		totalWeight += (body as RigidBody2D).mass
+		registerObj(body)
+		body.pan = self
+		
+	for obj in registeredObjs:
+		totalWeight += (obj as RigidBody2D).mass
 		
 	print(totalWeight)
 
 func registerObj(body):
-	registeredObjs.append(body)
+	if not (registeredObjs.has(body)):
+		registeredObjs.append(body)
 	
 func unregisterObj(body):
-	registeredObjs.erase(body)
+	if (registeredObjs.has(body)):
+		registeredObjs.erase(body)

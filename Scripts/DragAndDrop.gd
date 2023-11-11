@@ -1,3 +1,4 @@
+class_name DragAndDrop
 extends RigidBody2D
 
 @export var force : float = 10000
@@ -65,9 +66,12 @@ func _on_body_entered(body):
 	#TODO:
 	#register obj to pan when obj in pan detect area
 	#get pan reference from other obj when collide with other obj
+	if not (body is DragAndDrop):
+		return
 	if(body is DragAndDrop):
 		pan = body.pan
-		pan.registerObj(self)
+		if(pan):
+			pan.registerObj(self)
 	#TODO:
 	#Play hit/smoke/dust effect
 	var shape = collisionShape.shape
@@ -79,8 +83,8 @@ func _on_body_entered(body):
 		print(point)
 		#TODO:
 		#Play effect on each point
-		var effect : Node2D = contactEffect.instantiate();
-		(effect as Node2D).global_position = point
+		#var effect : Node2D = contactEffect.instantiate();
+		#(effect as Node2D).global_position = point
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -99,3 +103,9 @@ func _unhandled_input(event):
 		if held_object and !event.pressed:
 			held_object.drop(Input.get_last_mouse_velocity())
 			held_object = null		
+
+
+func _on_body_exited(body):
+	#TODO
+	#if exist drag and drop or pan, unregister
+	pass # Replace with function body.
