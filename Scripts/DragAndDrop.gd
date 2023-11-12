@@ -108,4 +108,11 @@ func _unhandled_input(event):
 func _on_body_exited(body):
 	#TODO
 	#if exist drag and drop or pan, unregister
-	pass # Replace with function body.
+	if not pan:
+		return
+	if (body is Pan):
+		if (body as Pan) == pan:
+			pan.unregisterObj(self)
+	elif (body is DragAndDrop):
+		if (body as DragAndDrop).pan == pan:
+			pan.unregisterObj(self)

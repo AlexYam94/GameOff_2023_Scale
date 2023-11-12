@@ -5,7 +5,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
-bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
 size = Vector2(10, 10)
