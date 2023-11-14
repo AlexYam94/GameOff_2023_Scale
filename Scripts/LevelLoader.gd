@@ -12,7 +12,7 @@ var currentLevelIdx : int = 0
 var fadeTimeCounter : float
 var shouldFade : bool
 var isFadeIn : bool
-var material : ShaderMaterial
+var fadeMaterial : ShaderMaterial
 
 var rng = RandomNumberGenerator.new()
 
@@ -43,7 +43,7 @@ func _process(delta):
 	else:
 		fadeValue = fadeTimeCounter/fadeTime
 	
-	material.set_shader_param("fadeValue", fadeValue)
+	fadeMaterial.set_shader_param("fadeValue", fadeValue)
 	
 func reset():
 	#TODO
@@ -53,7 +53,7 @@ func reset():
 	
 func startLoadNextLevel():
 	var shader = pickFadeShader()
-	material.shader = shader
+	fadeMaterial.shader = shader
 	fadeTimeCounter = fadeTime
 	shouldFade = true
 	isFadeIn = true
