@@ -70,8 +70,9 @@ func _on_body_entered(body):
 		return
 	if(body is DragAndDrop):
 		pan = body.pan
-		if(pan):
-			pan.registerObj(self)
+		
+	if(pan):
+		pan.registerObj(self)
 	#TODO:
 	#Play hit/smoke/dust effect
 	var shape = collisionShape.shape
@@ -113,6 +114,8 @@ func _on_body_exited(body):
 	if (body is Pan):
 		if (body as Pan) == pan:
 			pan.unregisterObj(self)
+			print("exit pan")
 	elif (body is DragAndDrop):
 		if (body as DragAndDrop).pan == pan:
 			pan.unregisterObj(self)
+			print("exit obj")
