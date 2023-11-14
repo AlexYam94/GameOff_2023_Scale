@@ -20,6 +20,8 @@ func _process(delta):
 		
 	print(totalWeight)
 	
+func get_register_obj_count():
+	return registeredObjs.size()
 
 func get_shape():
 	return collisionShape.shape
