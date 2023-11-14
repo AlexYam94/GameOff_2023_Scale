@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkvkblshax1wb"]
+
+[ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_d4ivf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwa0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvulj"]
+size = Vector2(16, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0fbk"]
+size = Vector2(2, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdslt"]
+size = Vector2(16, 0.1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tgww"]
+size = Vector2(0.1, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ju26"]
+size = Vector2(2, 0.1)
+
+[node name="Pan" type="RigidBody2D" node_paths=PackedStringArray("detectArea")]
+position = Vector2(-24, 9)
+collision_layer = 6
+collision_mask = 6
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_jwa0v")
+continuous_cd = 1
+max_contacts_reported = 20
+script = ExtResource("1_d4ivf")
+detectArea = NodePath("Area2D")
+detectGroup = "pickable"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mvulj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -4)
+shape = SubResource("RectangleShape2D_x0fbk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(9, -4)
+shape = SubResource("RectangleShape2D_x0fbk")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.2)
+shape = SubResource("RectangleShape2D_rdslt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.95, -4)
+shape = SubResource("RectangleShape2D_7tgww")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, -4)
+shape = SubResource("RectangleShape2D_7tgww")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, -8.55)
+shape = SubResource("RectangleShape2D_0ju26")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9, -8.55)
+shape = SubResource("RectangleShape2D_0ju26")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

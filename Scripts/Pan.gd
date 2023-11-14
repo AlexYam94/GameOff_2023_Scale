@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @export var detectArea : Area2D
 @export var detectGroup : String
+@export var collisionShape : CollisionShape2D
 
 var totalWeight : float
 var registeredObjs = []
@@ -13,18 +14,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var bodies = detectArea.get_overlapping_bodies()
-	totalWeight = 0
-	for body in bodies:
-		if not body.is_in_group(detectGroup):
-			continue
-		registerObj(body)
-		body.pan = self
+#	var bodies = detectArea.get_overlapping_bodies()
+#	for body in bodies:
+#		if not body.is_in_group(detectGroup):
+#			continue
+#		registerObj(body)
+#		body.pan = self
 		
+	totalWeight = 0
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass
 		
 	print(totalWeight)
+	
+
+func get_shape():
+	return collisionShape.shape
 
 func registerObj(body):
 	if not (registeredObjs.has(body)):
@@ -33,3 +38,10 @@ func registerObj(body):
 func unregisterObj(body):
 	if (registeredObjs.has(body)):
 		registeredObjs.erase(body)
+
+
+func _on_area_2d_body_entered(body):
+		if not body.is_in_group(detectGroup):
+			return
+		registerObj(body)
+		body.pan = self
