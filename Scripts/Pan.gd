@@ -14,13 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#	var bodies = detectArea.get_overlapping_bodies()
-#	for body in bodies:
-#		if not body.is_in_group(detectGroup):
-#			continue
-#		registerObj(body)
-#		body.pan = self
-		
 	totalWeight = 0
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass
