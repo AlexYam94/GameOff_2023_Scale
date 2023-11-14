@@ -34,7 +34,7 @@ func _process(delta):
 		countDownTimer = max(countDownTimer-delta, 0)
 		#countDown Animation
 		#print("count down: " + str(ceil(countDownTimer)))
-		SignalManager.emit_signal(SignalManager.countDownSignalName)
+		SignalManager.emit_signal(SignalManager.countDownSignalName, ceil(countDownTimer))
 	else:
 		countDownTimer = countDownTime
 		
