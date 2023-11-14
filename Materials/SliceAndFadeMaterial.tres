@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://boswqnnv75dbs"]
+
+[ext_resource type="Shader" path="res://Shaders/SliceAndFade.gdshader" id="1_u300a"]
+
+[resource]
+shader = ExtResource("1_u300a")
+shader_parameter/direction = Vector2(0, 0.5)
+shader_parameter/offset = null
+shader_parameter/fade = null
+shader_parameter/strip = 4.0

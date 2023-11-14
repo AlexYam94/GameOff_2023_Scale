@@ -13,6 +13,7 @@ extends Node2D
 
 var allObjects = []
 var countDownTimer : float
+var startLoadNextLevel : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,10 +39,11 @@ func _process(delta):
 	else:
 		countDownTimer = countDownTime
 		
-	if (countDownTimer <= 0):
+	if (countDownTimer <= 0 and !startLoadNextLevel):
 		#print("load next level")
 		#TODO
 		#Play fade in effect
 		#Next level
+		startLoadNextLevel = true
 		SignalManager.emit_signal(SignalManager.loadNextLevelSignalName)
 		pass

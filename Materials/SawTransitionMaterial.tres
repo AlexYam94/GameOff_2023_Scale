@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cvpl1gtvouo7j"]
+
+[ext_resource type="Shader" path="res://Shaders/SawTransition.gdshader" id="1_ixnd3"]
+
+[resource]
+shader = ExtResource("1_ixnd3")
+shader_parameter/saw_b_shift = 0.5
+shader_parameter/saw_a_interval = 1.0
+shader_parameter/saw_b_interval = 1.0
+shader_parameter/saw_a_scale = 0.5
+shader_parameter/saw_b_scale = 0.5
+shader_parameter/uv_scale = Vector2(1, 8)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/fadeValue = 0.865
+shader_parameter/left = -1.0

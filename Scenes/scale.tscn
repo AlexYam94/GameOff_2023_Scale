@@ -31,7 +31,7 @@ radius = 1.0
 script = ExtResource("1_d8q6w")
 leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
-countDownTime = 5.0
+countDownTime = 3.0
 
 [node name="Left Pan" parent="." instance=ExtResource("3_ijno2")]
 
