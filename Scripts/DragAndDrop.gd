@@ -58,16 +58,12 @@ func drop(impulse=Vector2.ZERO):
 	if held:
 		SignalManager.emit_signal(SignalManager.releaseObjectSignal)
 		gravity_scale = 1
-		#apply_central_impulse(impulse)
 		held = false
 		
 func get_shape():
 	return collisionShape.shape
 
 func _on_body_entered(body):
-	#TODO:
-	#register obj to pan when obj in pan detect area
-	#get pan reference from other obj when collide with other obj
 	if not (body is DragAndDrop):
 		return
 	if(body is DragAndDrop):
@@ -84,10 +80,8 @@ func _on_body_entered(body):
 		pass
 	for point in contactsPoints:
 		print(point)
-		#TODO:
-		#Play effect on each point
-		#var effect : Node2D = contactEffect.instantiate();
-		#(effect as Node2D).global_position = point
+		var effect : Node2D = contactEffect.instantiate();
+		(effect as Node2D).global_position = point
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
