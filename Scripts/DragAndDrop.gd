@@ -50,11 +50,13 @@ func _physics_process(delta):
 func pickup():
 	if held:
 		return
+	SignalManager.emit_signal(SignalManager.grappingObjectSignal)
 	gravity_scale = 0
 	held = true
 
 func drop(impulse=Vector2.ZERO):
 	if held:
+		SignalManager.emit_signal(SignalManager.releaseObjectSignal)
 		gravity_scale = 1
 		#apply_central_impulse(impulse)
 		held = false
