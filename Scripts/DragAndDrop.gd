@@ -9,7 +9,8 @@ extends RigidBody2D
 @export var collisionShape : CollisionShape2D
 @export var contactEffect : PackedScene
 
-@export var testSprite : Sprite2D
+@export var directionAndVelocityIndicator : Sprite2D
+@export var directionAndVelocityIndicatorScaleFactor : float = .1
 
 signal clicked
 
@@ -33,7 +34,10 @@ func _physics_process(delta):
 			var dir = (mousePos - global_position).normalized()
 			apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 			var predictedPosition = global_position + linear_velocity
-			testSprite.look_at(predictedPosition)
+			directionAndVelocityIndicator.look_at(predictedPosition)
+			directionAndVelocityIndicator.scale = new Vector2(
+				1+linear_velocity.x * directionAndVelocityIndicatorScaleFactor,
+				1+linear_velocity.y * directionAndVelocityIndicatorScaleFactor)
 			var gbPos = global_position
 			var predictedDir = (mousePos - predictedPosition).normalized()
 			if(predictedDir != dir):
