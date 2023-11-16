@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://deid5dwnia2h5"]
+
+[ext_resource type="Script" path="res://Scripts/HitEffect.gd" id="1_y0hvw"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/OutlineMaterial.tres" id="2_ohvj3"]
+[ext_resource type="Texture2D" uid="uid://c46o3le2xaopt" path="res://Arts/CollideEffect.png" id="2_rf7hr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7epl3"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fv3j"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8cb2"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnc54"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bm0j"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjwj"]
+atlas = ExtResource("2_rf7hr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq42t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7epl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fv3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8cb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnc54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bm0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjwj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="HitEffect" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_y0hvw")
+duration = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_ohvj3")
+sprite_frames = SubResource("SpriteFrames_fq42t")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0

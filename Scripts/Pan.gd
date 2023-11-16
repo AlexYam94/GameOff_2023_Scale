@@ -18,7 +18,7 @@ func _process(delta):
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass
 		
-	print(totalWeight)
+#	print(totalWeight)
 	
 func get_register_obj_count():
 	return registeredObjs.size()

@@ -19,3 +19,6 @@ fadeSprite = NodePath("../FadeInFadeOut")
 [node name="FadeInFadeOut" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("5_tas0t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

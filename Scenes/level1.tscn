@@ -16,9 +16,6 @@ size = Vector2(9.3625, 215.5)
 [node name="Scale" parent="." instance=ExtResource("2_r8ljl")]
 position = Vector2(0, -16)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
 [node name="Weight" parent="." instance=ExtResource("5_p7brq")]
 position = Vector2(-58, 93)
 collision_layer = 4
@@ -27,6 +24,8 @@ can_sleep = false
 stopDistance = 3.0
 
 [node name="Weight2" parent="." instance=ExtResource("5_p7brq")]
+process_mode = 4
+visible = false
 position = Vector2(58, 95)
 collision_layer = 4
 collision_mask = 4

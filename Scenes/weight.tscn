@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsyhmmvxevwih"]
+[gd_scene load_steps=6 format=3 uid="uid://dsyhmmvxevwih"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_tgghu"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="2_0kolw"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_vvtop"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -9,7 +10,7 @@ rough = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
 size = Vector2(10, 10)
 
-[node name="Weight" type="RigidBody2D" node_paths=PackedStringArray("collisionShape", "testSprite") groups=["pickable"]]
+[node name="Weight" type="RigidBody2D" node_paths=PackedStringArray("collisionShape", "directionAndVelocityIndicator") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
@@ -27,13 +28,14 @@ distanceDecayFactor = 40.0
 velocityDecayValue = 1.5
 nonFacingCursorFactor = 2.0
 collisionShape = NodePath("CollisionShape2D")
-testSprite = NodePath("Sprite2D")
+contactEffect = ExtResource("2_vvtop")
+directionAndVelocityIndicator = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3lujh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(6, 0)
+position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.1, 0.01)
 texture = ExtResource("2_0kolw")
 offset = Vector2(50, 0)

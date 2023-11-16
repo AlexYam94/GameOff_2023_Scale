@@ -10,7 +10,8 @@ extends RigidBody2D
 @export var contactEffect : PackedScene
 
 @export var directionAndVelocityIndicator : Sprite2D
-@export var directionAndVelocityIndicatorScaleFactor : float = .1
+@export var directionAndVelocityIndicatorScaleDivider : float = 3000
+@export var maxDirectionAndVelocityIndicatorScale : float = .8
 
 signal clicked
 
@@ -21,11 +22,13 @@ var held_object : Object = null
 var anchorPoint : Vector2
 
 var pan : Pan
+var originScale : Vector2
 
 func _ready():
 	directionAndVelocityIndicator.visibility = false
 	for node in get_tree().get_nodes_in_group("pickable"):
 		node.clicked.connect(_on_pickable_clicked)
+	originScale = directionAndVelocityIndicator.scale
 		
 func _physics_process(delta):
 	if held:
@@ -36,9 +39,7 @@ func _physics_process(delta):
 			apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
 			var predictedPosition = global_position + linear_velocity
 			directionAndVelocityIndicator.look_at(predictedPosition)
-			directionAndVelocityIndicator.scale = new Vector2(
-				1+linear_velocity.x * directionAndVelocityIndicatorScaleFactor,
-				1+linear_velocity.y * directionAndVelocityIndicatorScaleFactor)
+			#directionAndVelocityIndicator.scale.y = originScale.y + linear_velocity.y * directionAndVelocityIndicatorScaleFactor
 			var gbPos = global_position
 			var predictedDir = (mousePos - predictedPosition).normalized()
 			if(predictedDir != dir):
@@ -50,6 +51,10 @@ func _physics_process(delta):
 			newVelocity.x = max(0, newVelocity.x)
 			newVelocity.y = max(0, newVelocity.y)
 			linear_velocity = newVelocity
+		
+		
+	directionAndVelocityIndicator.scale.x = min(maxDirectionAndVelocityIndicatorScale, max(originScale.x, originScale.x + abs(linear_velocity.x + linear_velocity.y) / directionAndVelocityIndicatorScaleDivider))
+	print(directionAndVelocityIndicator.scale.x)
 			
 
 func pickup():
@@ -89,6 +94,7 @@ func _on_body_entered(body):
 		print(point)
 		var effect : Node2D = contactEffect.instantiate();
 		(effect as Node2D).global_position = point
+		get_parent().add_child(effect)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
