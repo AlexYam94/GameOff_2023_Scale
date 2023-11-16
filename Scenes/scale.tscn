@@ -32,6 +32,7 @@ script = ExtResource("1_d8q6w")
 leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
 countDownTime = 3.0
+pickableObjGroup = "pickable"
 
 [node name="Left Pan" parent="." instance=ExtResource("3_ijno2")]
 
