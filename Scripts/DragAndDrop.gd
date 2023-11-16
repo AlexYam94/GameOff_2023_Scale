@@ -23,6 +23,7 @@ var anchorPoint : Vector2
 var pan : Pan
 
 func _ready():
+	directionAndVelocityIndicator.visibility = false
 	for node in get_tree().get_nodes_in_group("pickable"):
 		node.clicked.connect(_on_pickable_clicked)
 		
@@ -55,12 +56,14 @@ func pickup():
 	if held:
 		return
 	SignalManager.emit_signal(SignalManager.grappingObjectSignal)
+	directionAndVelocityIndicator.visibility = true
 	gravity_scale = 0
 	held = true
 
 func drop(impulse=Vector2.ZERO):
 	if held:
 		SignalManager.emit_signal(SignalManager.releaseObjectSignal)
+		directionAndVelocityIndicator.visibility = false
 		gravity_scale = 1
 		held = false
 		
