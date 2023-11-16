@@ -25,7 +25,7 @@ var pan : Pan
 var originScale : Vector2
 
 func _ready():
-	directionAndVelocityIndicator.visibility = false
+	directionAndVelocityIndicator.visible = false
 	for node in get_tree().get_nodes_in_group("pickable"):
 		node.clicked.connect(_on_pickable_clicked)
 	originScale = directionAndVelocityIndicator.scale
@@ -54,21 +54,20 @@ func _physics_process(delta):
 		
 		
 	directionAndVelocityIndicator.scale.x = min(maxDirectionAndVelocityIndicatorScale, max(originScale.x, originScale.x + abs(linear_velocity.x + linear_velocity.y) / directionAndVelocityIndicatorScaleDivider))
-	print(directionAndVelocityIndicator.scale.x)
 			
 
 func pickup():
 	if held:
 		return
 	SignalManager.emit_signal(SignalManager.grappingObjectSignal)
-	directionAndVelocityIndicator.visibility = true
+	directionAndVelocityIndicator.visible = true
 	gravity_scale = 0
 	held = true
 
 func drop(impulse=Vector2.ZERO):
 	if held:
 		SignalManager.emit_signal(SignalManager.releaseObjectSignal)
-		directionAndVelocityIndicator.visibility = false
+		directionAndVelocityIndicator.visible = false
 		gravity_scale = 1
 		held = false
 		

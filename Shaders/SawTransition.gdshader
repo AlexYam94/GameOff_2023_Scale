@@ -28,7 +28,7 @@ float calc_saw( float y, float interval, float scale )
 
 void fragment( )
 {
-	float right = fadeValue;
+	float right = fadeValue - 0.25;
 	vec2 scaled_uv = UV * uv_scale;
 	float saw_a = calc_saw( scaled_uv.y, saw_a_interval, saw_a_scale );
 	float saw_b = calc_saw( scaled_uv.y + saw_b_shift, saw_b_interval, saw_b_scale );

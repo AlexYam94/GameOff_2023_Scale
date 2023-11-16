@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsyhmmvxevwih"]
 
-[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_tgghu"]
-[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="2_0kolw"]
-[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_vvtop"]
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_frnxq"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_jdjkr"]
+[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="3_1ji8i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -15,20 +15,20 @@ disable_mode = 2
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
+mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.1
 continuous_cd = 1
 max_contacts_reported = 10
 contact_monitor = true
 angular_damp = 30.606
-script = ExtResource("1_tgghu")
-force = 3000.0
-stopDistance = 100.0
-distanceDecayFactor = 40.0
-velocityDecayValue = 1.5
-nonFacingCursorFactor = 2.0
+script = ExtResource("1_frnxq")
+force = 1000.0
+stopDistance = 1.0
+distanceDecayFactor = 2.0
+velocityDecayValue = 1.0
 collisionShape = NodePath("CollisionShape2D")
-contactEffect = ExtResource("2_vvtop")
+contactEffect = ExtResource("2_jdjkr")
 directionAndVelocityIndicator = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_3lujh")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.1, 0.01)
-texture = ExtResource("2_0kolw")
+texture = ExtResource("3_1ji8i")
 offset = Vector2(50, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
