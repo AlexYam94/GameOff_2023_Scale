@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://758tbb5s8v5o"]
 
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_qwmnv"]
-[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/weight.tscn" id="2_k742i"]
+[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight.tscn" id="2_k742i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
 

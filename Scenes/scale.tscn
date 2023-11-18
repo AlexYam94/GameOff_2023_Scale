@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tpk7kc2i4gsq"]
+[gd_scene load_steps=12 format=3 uid="uid://tpk7kc2i4gsq"]
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
@@ -21,11 +21,8 @@ rough = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgkil"]
 radius = 0.2
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_milpa"]
-radius = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_saomf"]
-radius = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuyv2"]
+size = Vector2(129, 8)
 
 [node name="Scale" type="Node2D" node_paths=PackedStringArray("leftPan", "rightPan")]
 script = ExtResource("1_d8q6w")
@@ -40,7 +37,6 @@ position = Vector2(-24, -16)
 node_a = NodePath("../Arm")
 node_b = NodePath("../Left Pan")
 disable_collision = false
-softness = 1.0
 script = ExtResource("2_jwlwy")
 
 [node name="Arm" type="RigidBody2D" parent="." node_paths=PackedStringArray("leftPan", "rightPan", "armVisual")]
@@ -53,7 +49,7 @@ freeze_mode = 1
 script = ExtResource("1_va0ln")
 leftPan = NodePath("../Left Pan")
 rightPan = NodePath("../Right Pan")
-armVisual = NodePath("Sprite2D")
+armVisual = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Arm"]
 position = Vector2(9.53674e-07, 0)
@@ -79,8 +75,8 @@ freeze = true
 position = Vector2(0, 11.75)
 shape = SubResource("RectangleShape2D_ygpsg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Arm"]
-position = Vector2(-1.43051e-06, 0)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -16)
 scale = Vector2(0.375, 0.01)
 texture = ExtResource("4_plrco")
 
@@ -92,29 +88,19 @@ physics_material_override = SubResource("PhysicsMaterial_va4sl")
 shape = SubResource("CircleShape2D_qgkil")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-process_mode = 4
-visible = false
-position = Vector2(0, -28)
+position = Vector2(0, 37)
+collision_layer = 5
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_va4sl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource("CircleShape2D_milpa")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-process_mode = 4
-visible = false
-position = Vector2(0, -10)
-physics_material_override = SubResource("PhysicsMaterial_va4sl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-shape = SubResource("CircleShape2D_saomf")
+shape = SubResource("RectangleShape2D_xuyv2")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2(24, -16)
 node_a = NodePath("../Arm")
 node_b = NodePath("../Right Pan")
 disable_collision = false
-softness = 1.0
 script = ExtResource("2_jwlwy")
 
 [node name="Right Pan" parent="." instance=ExtResource("3_ijno2")]

@@ -12,30 +12,26 @@ rough = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26xdl"]
 size = Vector2(11.3251, 30.4104)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0suvb"]
-a = Vector2(-4.84371, -14.5393)
-b = Vector2(0.860004, -20.1489)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkmt5"]
+size = Vector2(5.55079, 7.38664)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jmmii"]
-a = Vector2(5.05544, -14.457)
-b = Vector2(-0.554161, -20.1607)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mn0p"]
+size = Vector2(7.27705, 7.22252)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_u5v6v"]
-a = Vector2(-0.14704, 15.9064)
-b = Vector2(-0.21762, 24.3914)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07klv"]
+size = Vector2(2.84009, 9.20972)
 
 [node name="DragonSlayer" type="RigidBody2D" node_paths=PackedStringArray("collisionShape", "directionAndVelocityIndicator") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
-mass = 50.0
+mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.1
 continuous_cd = 1
 max_contacts_reported = 10
 contact_monitor = true
-angular_damp = 30.606
 script = ExtResource("1_mgsrs")
 stopDistance = 1.0
 distanceDecayFactor = 40.0
@@ -51,19 +47,19 @@ rotation = -0.793716
 shape = SubResource("RectangleShape2D_26xdl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(3.76241, -1.25842)
-rotation = -0.793716
-shape = SubResource("SegmentShape2D_0suvb")
+position = Vector2(-7, -13)
+rotation = -1.60626
+shape = SubResource("RectangleShape2D_pkmt5")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(3.76241, -1.25842)
-rotation = -0.793716
-shape = SubResource("SegmentShape2D_jmmii")
+position = Vector2(-7, -12)
+rotation = -0.0344161
+shape = SubResource("RectangleShape2D_5mn0p")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(3.76241, -1.25842)
+position = Vector2(17.7542, 12.75)
 rotation = -0.793716
-shape = SubResource("SegmentShape2D_u5v6v")
+shape = SubResource("RectangleShape2D_07klv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("3_u3d3a")

@@ -24,6 +24,8 @@ var anchorPoint : Vector2
 var pan : Pan
 var originScale : Vector2
 
+var pickupDir : Vector2
+
 func _ready():
 	directionAndVelocityIndicator.visible = false
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -43,9 +45,9 @@ func _physics_process(delta):
 			var gbPos = global_position
 			var predictedDir = (mousePos - predictedPosition).normalized()
 			if(predictedDir != dir):
-				apply_central_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor)
+				apply_force(dir * force * delta * (distance / distanceDecayFactor) * nonFacingCursorFactor, pickupDir)
 			else:
-				apply_central_force(dir * force * delta * (distance / distanceDecayFactor))
+				apply_force(dir * force * delta * (distance / distanceDecayFactor), pickupDir)
 		else:
 			var newVelocity = lerp(linear_velocity,Vector2.ZERO,velocityDecayValue)
 			newVelocity.x = max(0, newVelocity.x)
@@ -63,6 +65,7 @@ func pickup():
 	directionAndVelocityIndicator.visible = true
 	gravity_scale = 0
 	held = true
+	pickupDir = get_global_mouse_position() - global_position
 
 func drop(impulse=Vector2.ZERO):
 	if held:
