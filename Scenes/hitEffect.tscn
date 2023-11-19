@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://deid5dwnia2h5"]
 
 [ext_resource type="Script" path="res://Scripts/HitEffect.gd" id="1_y0hvw"]
-[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="2_f5xml"]
+[ext_resource type="Material" uid="uid://bklqowmll1yia" path="res://Materials/WhiteOutlineMaterial.tres" id="2_80nm8"]
 [ext_resource type="Texture2D" uid="uid://c46o3le2xaopt" path="res://Arts/CollideEffect.png" id="2_rf7hr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7epl3"]
@@ -60,7 +60,7 @@ script = ExtResource("1_y0hvw")
 duration = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_f5xml")
+material = ExtResource("2_80nm8")
 sprite_frames = SubResource("SpriteFrames_fq42t")
 autoplay = "default"
 frame = 5

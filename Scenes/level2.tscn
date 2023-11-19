@@ -23,13 +23,12 @@ collision_mask = 4
 can_sleep = false
 stopDistance = 3.0
 
-[node name="Weight4" parent="." node_paths=PackedStringArray("collisionShape") instance=ExtResource("2_k742i")]
+[node name="Weight4" parent="." instance=ExtResource("2_k742i")]
 position = Vector2(-44, 93)
 collision_layer = 4
 collision_mask = 4
 can_sleep = false
 stopDistance = 3.0
-collisionShape = NodePath("../Weight/CollisionShape2D")
 
 [node name="Weight2" parent="." instance=ExtResource("2_k742i")]
 position = Vector2(58, 95)
@@ -38,13 +37,12 @@ collision_mask = 4
 can_sleep = false
 stopDistance = 3.0
 
-[node name="Weight3" parent="." node_paths=PackedStringArray("collisionShape") instance=ExtResource("2_k742i")]
+[node name="Weight3" parent="." instance=ExtResource("2_k742i")]
 position = Vector2(45, 95)
 collision_layer = 4
 collision_mask = 4
 can_sleep = false
 stopDistance = 3.0
-collisionShape = NodePath("../Weight2/CollisionShape2D")
 
 [node name="Wall" type="RigidBody2D" parent="."]
 position = Vector2(2, 105)

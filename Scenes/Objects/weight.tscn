@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsyhmmvxevwih"]
+[gd_scene load_steps=7 format=3 uid="uid://dsyhmmvxevwih"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_frnxq"]
 [ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_jdjkr"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="3_1ji8i"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_elsg4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -10,7 +11,7 @@ rough = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
 size = Vector2(10, 10)
 
-[node name="Weight" type="RigidBody2D" node_paths=PackedStringArray("collisionShape", "directionAndVelocityIndicator") groups=["pickable"]]
+[node name="Weight" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
@@ -23,11 +24,10 @@ max_contacts_reported = 10
 contact_monitor = true
 angular_damp = 30.606
 script = ExtResource("1_frnxq")
-force = 3000.0
+force = 5000.0
 stopDistance = 1.0
 distanceDecayFactor = 2.0
 velocityDecayValue = 1.0
-collisionShape = NodePath("CollisionShape2D")
 contactEffect = ExtResource("2_jdjkr")
 directionAndVelocityIndicator = NodePath("Sprite2D")
 
@@ -39,6 +39,8 @@ position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.1, 0.01)
 texture = ExtResource("3_1ji8i")
 offset = Vector2(50, 0)
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_elsg4")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

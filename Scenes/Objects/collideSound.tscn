@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmvuuffr6t800"]
+
+[ext_resource type="AudioStream" uid="uid://b1vh7177ssvsy" path="res://Sounds/test.wav" id="1_wg043"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_wg043")
+volume_db = 20.0
+attenuation = 1e-05

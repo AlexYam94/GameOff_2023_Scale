@@ -5,15 +5,22 @@ extends RigidBody2D
 @export var detectGroup : String
 @export var collisionShape : CollisionShape2D
 
+@export var maxVelocity : float
+
+var collisionShapes = []
 var totalWeight : float
 var registeredObjs = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for node in get_children():
+		if(node is CollisionShape2D):
+			collisionShapes.append(node)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(linear_velocity.x > maxVelocity):
+		linear_velocity = Vector2(maxVelocity,0)
 	totalWeight = 0
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass
@@ -24,7 +31,7 @@ func get_register_obj_count():
 	return registeredObjs.size()
 
 func get_shape():
-	return collisionShape.shape
+	return collisionShapes
 
 func registerObj(body):
 	if not (registeredObjs.has(body)):

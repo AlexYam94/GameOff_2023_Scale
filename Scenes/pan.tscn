@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkvkblshax1wb"]
+[gd_scene load_steps=10 format=3 uid="uid://dkvkblshax1wb"]
 
 [ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_d4ivf"]
 [ext_resource type="Texture2D" uid="uid://d3ml3ei612b73" path="res://Arts/Pan.png" id="2_dbxqs"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="2_mehxc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwa0v"]
 
@@ -20,7 +21,7 @@ size = Vector2(0.0786645, 1.85648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ju26"]
 size = Vector2(2, 0.1)
 
-[node name="Pan" type="RigidBody2D" node_paths=PackedStringArray("detectArea")]
+[node name="Pan" type="RigidBody2D" node_paths=PackedStringArray("detectArea") groups=["collidable"]]
 position = Vector2(-24, 9)
 collision_layer = 6
 collision_mask = 6
@@ -29,9 +30,12 @@ physics_material_override = SubResource("PhysicsMaterial_jwa0v")
 continuous_cd = 2
 max_contacts_reported = 20
 contact_monitor = true
+lock_rotation = true
+linear_damp = 30.0
 script = ExtResource("1_d4ivf")
 detectArea = NodePath("Area2D")
 detectGroup = "pickable"
+maxVelocity = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00917244, -0.00147629)
@@ -89,6 +93,7 @@ position = Vector2(11.1691, -1.50038)
 shape = SubResource("RectangleShape2D_0ju26")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_mehxc")
 position = Vector2(-0.0686035, -0.758163)
 scale = Vector2(0.04, 0.05)
 texture = ExtResource("2_dbxqs")

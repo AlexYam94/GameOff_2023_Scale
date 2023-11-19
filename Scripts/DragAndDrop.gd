@@ -6,14 +6,16 @@ extends RigidBody2D
 @export var distanceDecayFactor : float = 200
 @export var velocityDecayValue : float = .5
 @export var nonFacingCursorFactor : float = 1
-@export var collisionShape : CollisionShape2D
 @export var contactEffect : PackedScene
 
 @export var directionAndVelocityIndicator : Sprite2D
 @export var directionAndVelocityIndicatorScaleDivider : float = 3000
 @export var maxDirectionAndVelocityIndicatorScale : float = .8
 
+
 signal clicked
+
+var collisionShapes = []
 
 var held : bool = false
 
@@ -25,12 +27,19 @@ var pan : Pan
 var originScale : Vector2
 
 var pickupDir : Vector2
+var contactSound : AudioStreamPlayer2D
 
 func _ready():
 	directionAndVelocityIndicator.visible = false
 	for node in get_tree().get_nodes_in_group("pickable"):
 		node.clicked.connect(_on_pickable_clicked)
 	originScale = directionAndVelocityIndicator.scale
+	for node in get_children():
+		if(node is CollisionShape2D):
+			collisionShapes.append(node)
+		if(node is AudioStreamPlayer2D):
+			contactSound = node
+
 		
 func _physics_process(delta):
 	if held:
@@ -75,11 +84,11 @@ func drop(impulse=Vector2.ZERO):
 		held = false
 		
 func get_shape():
-	return collisionShape.shape
+	return collisionShapes
 
 func _on_body_entered(body):
-	if not (body is DragAndDrop):
-		return
+#	if not (body is DragAndDrop) and not (body is Pan):
+#		return
 	if(body is DragAndDrop):
 		pan = body.pan
 		
@@ -87,16 +96,21 @@ func _on_body_entered(body):
 		pan.registerObj(self)
 	#TODO:
 	#Play hit/smoke/dust effect
-	var shape = collisionShape.shape
-	var otherShape = body.get_shape()
-	var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
-	if(!contactsPoints):
-		pass
-	for point in contactsPoints:
-		print(point)
-		var effect : Node2D = contactEffect.instantiate();
-		(effect as Node2D).global_position = point
-		get_parent().add_child(effect)
+	contactSound.play()
+	var otherShapes = body.get_shape()
+	if(body is DragAndDrop):
+		if((body as RigidBody2D).linear_velocity == Vector2.ZERO):
+			return
+	for collisionShape in collisionShapes:
+		for otherCollisionShape in otherShapes:
+			var shape = collisionShape.shape
+			var otherShape = otherCollisionShape.shape
+			var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
+			for point in contactsPoints:
+				print(point)
+				var effect : Node2D = contactEffect.instantiate();
+				(effect as Node2D).global_position = point
+				get_parent().add_child(effect)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

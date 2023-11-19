@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://i1qwhe5h610m"]
 
+[ext_resource type="Script" path="res://Scripts/Wall.gd" id="2_lsdm4"]
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="2_r8ljl"]
 [ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight.tscn" id="3_7jmg6"]
-[ext_resource type="PackedScene" uid="uid://ra34xg4ag4or" path="res://Scenes/Objects/weight2.tscn" id="4_2who6"]
 [ext_resource type="PackedScene" uid="uid://cjumqdexv0tln" path="res://Scenes/Objects/dragonSlayer.tscn" id="4_thc62"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
@@ -18,7 +18,7 @@ size = Vector2(9.3625, 215.5)
 [node name="Scale" parent="." instance=ExtResource("2_r8ljl")]
 position = Vector2(0, -16)
 
-[node name="Wall" type="RigidBody2D" parent="."]
+[node name="Wall" type="RigidBody2D" parent="." groups=["collidable"]]
 position = Vector2(2, 105)
 collision_layer = 6
 collision_mask = 6
@@ -28,12 +28,13 @@ gravity_scale = 0.0
 continuous_cd = 1
 max_contacts_reported = 10
 freeze = true
+script = ExtResource("2_lsdm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-8.00002, 16.5)
 shape = SubResource("RectangleShape2D_62sd6")
 
-[node name="Wall2" type="RigidBody2D" parent="."]
+[node name="Wall2" type="RigidBody2D" parent="." groups=["collidable"]]
 position = Vector2(-190, -9)
 collision_layer = 6
 collision_mask = 6
@@ -43,12 +44,13 @@ gravity_scale = 0.0
 continuous_cd = 1
 max_contacts_reported = 10
 freeze = true
+script = ExtResource("2_lsdm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2(0.318748, 49.25)
 shape = SubResource("RectangleShape2D_p3kyc")
 
-[node name="Wall3" type="RigidBody2D" parent="."]
+[node name="Wall3" type="RigidBody2D" parent="." groups=["collidable"]]
 position = Vector2(190, 36)
 collision_layer = 6
 collision_mask = 6
@@ -58,6 +60,7 @@ gravity_scale = 0.0
 continuous_cd = 1
 max_contacts_reported = 10
 freeze = true
+script = ExtResource("2_lsdm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
 position = Vector2(0, 2)
@@ -70,9 +73,6 @@ distanceDecayFactor = 40.0
 [node name="Weight2" parent="." instance=ExtResource("3_7jmg6")]
 position = Vector2(43, 65)
 distanceDecayFactor = 40.0
-
-[node name="Weight3" parent="." instance=ExtResource("4_2who6")]
-position = Vector2(-64, 76)
 
 [node name="DragonSlayer" parent="." instance=ExtResource("4_thc62")]
 position = Vector2(-28, 34)
