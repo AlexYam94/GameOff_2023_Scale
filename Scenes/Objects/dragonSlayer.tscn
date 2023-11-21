@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjumqdexv0tln"]
+[gd_scene load_steps=13 format=3 uid="uid://cjumqdexv0tln"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_mgsrs"]
 [ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_eposh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="3_segch"]
 [ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="3_u3d3a"]
 [ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="6_tgt3y"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="7_ux8x3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -39,41 +40,43 @@ distanceDecayFactor = 40.0
 velocityDecayValue = 1.0
 nonFacingCursorFactor = 2.0
 contactEffect = ExtResource("2_eposh")
-directionAndVelocityIndicator = NodePath("Indicator")
+directionAndVelocityIndicator = NodePath("DirectionIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.76241, -1.25842)
+position = Vector2(-1.45181, -1.25842)
 rotation = -0.793716
 shape = SubResource("RectangleShape2D_26xdl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -13)
+position = Vector2(-12.2142, -13)
 rotation = -1.60626
 shape = SubResource("RectangleShape2D_pkmt5")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -12)
+position = Vector2(-12.2142, -12)
 rotation = -0.0344161
 shape = SubResource("RectangleShape2D_5mn0p")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(17.7542, 12.75)
+position = Vector2(12.54, 12.75)
 rotation = -0.793716
 shape = SubResource("RectangleShape2D_07klv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("3_u3d3a")
-position = Vector2(5, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_jwviu")
 
 [node name="Indicator" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(4, -1)
 scale = Vector2(0.1, 0.01)
 texture = ExtResource("3_segch")
 offset = Vector2(50, 0)
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_tgt3y")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("7_ux8x3")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

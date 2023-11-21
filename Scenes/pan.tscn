@@ -35,7 +35,7 @@ linear_damp = 30.0
 script = ExtResource("1_d4ivf")
 detectArea = NodePath("Area2D")
 detectGroup = "pickable"
-maxVelocity = 0.5
+maxVelocity = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00917244, -0.00147629)

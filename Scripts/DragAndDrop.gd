@@ -8,7 +8,7 @@ extends RigidBody2D
 @export var nonFacingCursorFactor : float = 1
 @export var contactEffect : PackedScene
 
-@export var directionAndVelocityIndicator : Sprite2D
+@export var directionAndVelocityIndicator : Node2D
 @export var directionAndVelocityIndicatorScaleDivider : float = 3000
 @export var maxDirectionAndVelocityIndicatorScale : float = .8
 
@@ -107,7 +107,7 @@ func _on_body_entered(body):
 			var otherShape = otherCollisionShape.shape
 			var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
 			for point in contactsPoints:
-				print(point)
+#				print(point)
 				var effect : Node2D = contactEffect.instantiate();
 				(effect as Node2D).global_position = point
 				get_parent().add_child(effect)

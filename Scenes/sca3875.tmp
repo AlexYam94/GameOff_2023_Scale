@@ -1,16 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://tpk7kc2i4gsq"]
+[gd_scene load_steps=16 format=3 uid="uid://tpk7kc2i4gsq"]
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
 [ext_resource type="Script" path="res://Scripts/Gear.gd" id="2_fjj23"]
 [ext_resource type="Script" path="res://Scripts/pinJoint.gd" id="2_jwlwy"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="3_74kb1"]
 [ext_resource type="PackedScene" uid="uid://dkvkblshax1wb" path="res://Scenes/pan.tscn" id="3_ijno2"]
-[ext_resource type="Texture2D" uid="uid://uojnfhneeiro" path="res://Arts/SideGear.png" id="3_muvup"]
-[ext_resource type="Texture2D" uid="uid://bkpqry6y0uf6u" path="res://Arts/TopGear.png" id="4_c1i15"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="4_plrco"]
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="6_ryjkn"]
 [ext_resource type="Texture2D" uid="uid://dmnfeut3vh4sn" path="res://Arts/Rope.png" id="7_forb6"]
-[ext_resource type="Material" uid="uid://c6ra8yj3582kq" path="res://Materials/ThinBlackOutlineMaterial.tres" id="12_h85ji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dqaw"]
 size = Vector2(48, 2)
@@ -36,76 +34,25 @@ leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
 countDownTime = 1000.0
 
-[node name="ImovingRopes" type="Node2D" parent="."]
-position = Vector2(-15.4861, -16.3944)
-scale = Vector2(0.025, 0.075)
-
-[node name="rope" type="Sprite2D" parent="ImovingRopes"]
-material = ExtResource("12_h85ji")
-position = Vector2(-313.998, -67.139)
-rotation = 1.22576
-scale = Vector2(0.425, 0.370816)
-texture = ExtResource("7_forb6")
-
-[node name="rope2" type="Sprite2D" parent="ImovingRopes"]
-material = ExtResource("12_h85ji")
-position = Vector2(130.852, -133.291)
-rotation = 1.45179
-scale = Vector2(0.425, 2.46503)
-texture = ExtResource("7_forb6")
-
-[node name="rope4" type="Sprite2D" parent="ImovingRopes"]
-material = ExtResource("12_h85ji")
-position = Vector2(1552.4, -66.6365)
-rotation = -1.18824
-scale = Vector2(0.425, 0.379981)
-texture = ExtResource("7_forb6")
-
-[node name="rope5" type="Sprite2D" parent="ImovingRopes"]
-material = ExtResource("12_h85ji")
-position = Vector2(1114.46, -134.524)
-rotation = -1.45211
-scale = Vector2(0.425, 2.41577)
-texture = ExtResource("7_forb6")
-
-[node name="rope3" type="Sprite2D" parent="ImovingRopes"]
-material = ExtResource("12_h85ji")
-position = Vector2(626.807, -180.086)
-rotation = 1.5708
-scale = Vector2(0.425, 0.656179)
-texture = ExtResource("7_forb6")
-
 [node name="LeftGear" type="Node2D" parent="." node_paths=PackedStringArray("pan")]
-position = Vector2(-19.1816, -17.6866)
-scale = Vector2(0.05, 0.05)
-script = ExtResource("2_fjj23")
-pan = NodePath("../Left Pan")
-rotationAmountPerFrame = 0.3
-
-[node name="Sprite2D" type="Sprite2D" parent="LeftGear"]
-texture = ExtResource("3_muvup")
-
-[node name="TopGear" type="Node2D" parent="." node_paths=PackedStringArray("pan")]
-position = Vector2(0.00115202, -24.3465)
+position = Vector2(-20.7667, -17.6866)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("2_fjj23")
 pan = NodePath("../Left Pan")
 rotationAmountPerFrame = 0.1
 
-[node name="Sprite2D" type="Sprite2D" parent="TopGear"]
-position = Vector2(4.00377, -2.75677)
-texture = ExtResource("4_c1i15")
+[node name="Sprite2D" type="Sprite2D" parent="LeftGear"]
+texture = ExtResource("4_plrco")
 
 [node name="LeftRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
-position = Vector2(-24.5, -19.8007)
-scale = Vector2(0.5, 1)
+position = Vector2(-25, -16)
 script = ExtResource("6_ryjkn")
 connectedPan = NodePath("../Left Pan")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftRope"]
-material = ExtResource("12_h85ji")
-position = Vector2(0, 14.4986)
-scale = Vector2(0.05, 0.093134)
+material = ExtResource("3_74kb1")
+position = Vector2(0, 12.1539)
+scale = Vector2(0.05, 0.075)
 texture = ExtResource("7_forb6")
 
 [node name="Left Pan" parent="." instance=ExtResource("3_ijno2")]
@@ -154,7 +101,6 @@ position = Vector2(0, 11.75)
 shape = SubResource("RectangleShape2D_ygpsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-1.43051e-06, -16)
 scale = Vector2(0.375, 0.01)
 texture = ExtResource("4_plrco")
@@ -182,26 +128,15 @@ node_b = NodePath("../Right Pan")
 disable_collision = false
 script = ExtResource("2_jwlwy")
 
-[node name="RightGear" type="Node2D" parent="." node_paths=PackedStringArray("pan")]
-position = Vector2(19.1116, -17.6866)
-scale = Vector2(0.05, 0.05)
-script = ExtResource("2_fjj23")
-pan = NodePath("../Left Pan")
-rotationAmountPerFrame = 0.3
-
-[node name="Sprite2D" type="Sprite2D" parent="RightGear"]
-texture = ExtResource("3_muvup")
-
 [node name="RightRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
-position = Vector2(24.5, -19.8007)
-scale = Vector2(0.5, 1)
+position = Vector2(25, -16)
 script = ExtResource("6_ryjkn")
 connectedPan = NodePath("../Right Pan")
 
 [node name="Sprite2D" type="Sprite2D" parent="RightRope"]
-material = ExtResource("12_h85ji")
-position = Vector2(0, 14.5177)
-scale = Vector2(0.05, 0.0930144)
+material = ExtResource("3_74kb1")
+position = Vector2(0, 12.1539)
+scale = Vector2(0.05, 0.075)
 texture = ExtResource("7_forb6")
 
 [node name="Right Pan" parent="." instance=ExtResource("3_ijno2")]
