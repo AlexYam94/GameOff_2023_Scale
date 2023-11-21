@@ -19,8 +19,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(linear_velocity.x > maxVelocity):
-		linear_velocity = Vector2(maxVelocity,0)
+	if(linear_velocity.y > maxVelocity):
+		linear_velocity = Vector2(0,maxVelocity)
+	elif(linear_velocity.y < -maxVelocity):
+		linear_velocity = Vector2(0,-maxVelocity)
 	totalWeight = 0
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass

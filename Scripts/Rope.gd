@@ -11,5 +11,5 @@ func _ready():
 
 func _process(delta):
 	var currentDistance : float = global_position.distance_to(connectedPan.global_position)
-	scale.x = currentDistance / originalDistance
+	scale.y = currentDistance / originalDistance
 	pass
