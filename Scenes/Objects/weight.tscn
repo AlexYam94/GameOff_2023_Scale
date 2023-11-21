@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsyhmmvxevwih"]
+[gd_scene load_steps=8 format=3 uid="uid://dsyhmmvxevwih"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_frnxq"]
 [ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_jdjkr"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="3_1ji8i"]
 [ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_elsg4"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="5_0h2in"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
@@ -29,18 +30,21 @@ stopDistance = 1.0
 distanceDecayFactor = 2.0
 velocityDecayValue = 1.0
 contactEffect = ExtResource("2_jdjkr")
-directionAndVelocityIndicator = NodePath("Sprite2D")
+directionAndVelocityIndicator = NodePath("DirectionIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3lujh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.1, 0.01)
 texture = ExtResource("3_1ji8i")
 offset = Vector2(50, 0)
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_elsg4")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_0h2in")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
