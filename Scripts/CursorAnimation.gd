@@ -11,28 +11,29 @@ var isGrapping : bool = false
 var currentFrameIdx = 0
 
 func _ready():
-    SignalManager.connect(SignalManager.grappingObjectSignal, grapObject)
-    SignalManager.connect(SignalManager.releaseObjectSignal, releaseObject)
+	SignalManager.connect(SignalManager.grappingObjectSignal, grapObject)
+	SignalManager.connect(SignalManager.releaseObjectSignal, releaseObject)
 
 func _process(delta):
-    if not isGrapping:
-        return
+	if not isGrapping:
+		return
 
-    frameCounter = max(frameCounter - delta, 0)
-    
-    if(frameCounter <= 0):
-        frameCounter = frameDuration
-        currentFrameIdx = (currentFrameIdx + 1) % grapFrames
-        
-    Input.set_custom_mouse_curosr(grapFrames[currentFrameIdx])
-    
+	frameCounter = max(frameCounter - delta, 0)
+	
+	if(frameCounter <= 0):
+		frameCounter = frameDuration
+		currentFrameIdx = (currentFrameIdx + 1) % grapFrames.size()
+		
+	Input.set_custom_mouse_cursor(grapFrames[currentFrameIdx])
+	
 
 func releaseObject():
-    Input.set_custom_mouse_curosr(idleSprite)
-    isGrapping = false
+#	Input.set_custom_mouse_cursor(idleSprite)
+	Input.set_custom_mouse_cursor(null)
+	isGrapping = false
 
 func grapObject():
-    frameCounter = frameDuration
-    currentFrameIdx = 0
-    isGrapping = true
-    pass
+	frameCounter = frameDuration
+	currentFrameIdx = 0
+	isGrapping = true
+	pass
