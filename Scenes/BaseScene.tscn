@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d175puobirwmb"]
+[gd_scene load_steps=9 format=3 uid="uid://d175puobirwmb"]
 
 [ext_resource type="Script" path="res://Scripts/LevelLoader.gd" id="1_77kdu"]
 [ext_resource type="PackedScene" uid="uid://i1qwhe5h610m" path="res://Scenes/level1.tscn" id="2_axeju"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dg8kx41ymnch1" path="res://Scenes/end.tscn" id="4_va1b8"]
 [ext_resource type="Material" uid="uid://boswqnnv75dbs" path="res://Materials/SliceAndFadeMaterial.tres" id="5_mn2y7"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="5_tas0t"]
+[ext_resource type="Script" path="res://Scripts/CursorAnimation.gd" id="7_ai2me"]
+[ext_resource type="Texture2D" uid="uid://f0rh611oynrq" path="res://Arts/Cursor Selected.png" id="8_dubch"]
 
 [node name="Root" type="Node2D"]
 
@@ -22,3 +24,7 @@ texture = ExtResource("5_tas0t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="CursorAnimation" type="Node2D" parent="."]
+script = ExtResource("7_ai2me")
+grapFrames = Array[Resource]([ExtResource("8_dubch")])

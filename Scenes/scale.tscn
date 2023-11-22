@@ -1,12 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://tpk7kc2i4gsq"]
+[gd_scene load_steps=21 format=3 uid="uid://tpk7kc2i4gsq"]
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
 [ext_resource type="Script" path="res://Scripts/Gear.gd" id="2_fjj23"]
 [ext_resource type="Script" path="res://Scripts/pinJoint.gd" id="2_jwlwy"]
+[ext_resource type="Texture2D" uid="uid://wodajpniv6ht" path="res://Arts/ScaleStick.png" id="2_u7wsk"]
+[ext_resource type="Texture2D" uid="uid://d1q4do1xt0c6n" path="res://Arts/Scale Egg.png" id="3_e824m"]
 [ext_resource type="PackedScene" uid="uid://dkvkblshax1wb" path="res://Scenes/pan.tscn" id="3_ijno2"]
 [ext_resource type="Texture2D" uid="uid://uojnfhneeiro" path="res://Arts/SideGear.png" id="3_muvup"]
 [ext_resource type="Texture2D" uid="uid://bkpqry6y0uf6u" path="res://Arts/TopGear.png" id="4_c1i15"]
+[ext_resource type="Texture2D" uid="uid://dcbfeew1qup8b" path="res://Arts/Arm.png" id="4_oggc7"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="4_plrco"]
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="6_ryjkn"]
 [ext_resource type="Texture2D" uid="uid://dmnfeut3vh4sn" path="res://Arts/Rope.png" id="7_forb6"]
@@ -35,6 +38,26 @@ script = ExtResource("1_d8q6w")
 leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
 countDownTime = 1000.0
+
+[node name="ScaleStick" type="Sprite2D" parent="."]
+position = Vector2(0, -16.2712)
+scale = Vector2(0.05, 0.0251969)
+texture = ExtResource("2_u7wsk")
+
+[node name="ScaleStick2" type="Sprite2D" parent="."]
+position = Vector2(0, 11.8439)
+scale = Vector2(0.05, 0.0251969)
+texture = ExtResource("2_u7wsk")
+
+[node name="ScaleEgg" type="Sprite2D" parent="."]
+position = Vector2(0, -2.182)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_e824m")
+
+[node name="Arm2" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_oggc7")
 
 [node name="ImovingRopes" type="Node2D" parent="."]
 position = Vector2(-15.4861, -16.3944)
