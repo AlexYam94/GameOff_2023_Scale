@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfshiomy8ppc2"
-path="res://.godot/imported/Direction Indicator gear.png-e690d98dc59c5028d34b4f7cfadca47c.ctex"
+uid="uid://d3ml3ei612b73"
+path="res://.godot/imported/Pan.png-80a8310d8028cba2d83617f14a9461d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Direction Indicator gear.png"
-dest_files=["res://.godot/imported/Direction Indicator gear.png-e690d98dc59c5028d34b4f7cfadca47c.ctex"]
+source_file="res://Arts/Scale/Pan.png"
+dest_files=["res://.godot/imported/Pan.png-80a8310d8028cba2d83617f14a9461d3.ctex"]
 
 [params]
 

@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://hop6tbteh5gy"]
 
-[ext_resource type="Texture2D" uid="uid://dfshiomy8ppc2" path="res://Arts/Direction Indicator gear.png" id="1_o5kj3"]
-[ext_resource type="Texture2D" uid="uid://nummug6d5rgl" path="res://Arts/Direction Indicator arrow.png" id="2_p3ijj"]
+[ext_resource type="Texture2D" uid="uid://dfshiomy8ppc2" path="res://Arts/Other/Direction Indicator gear.png" id="1_464g3"]
+[ext_resource type="Texture2D" uid="uid://nummug6d5rgl" path="res://Arts/Other/Direction Indicator arrow.png" id="2_j78d4"]
 
 [node name="DirectionIndicator" type="Node2D"]
 
 [node name="Gear" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_o5kj3")
+texture = ExtResource("1_464g3")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 position = Vector2(11.9827, 0.425921)
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_p3ijj")
+texture = ExtResource("2_j78d4")

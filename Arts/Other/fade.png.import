@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uojnfhneeiro"
-path="res://.godot/imported/SideGear.png-bdfb1fe9db68c4dc6a51715803609456.ctex"
+uid="uid://bic5txawa5ggs"
+path="res://.godot/imported/fade.png-cc31f1c3081beb1d401959d552612530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/SideGear.png"
-dest_files=["res://.godot/imported/SideGear.png-bdfb1fe9db68c4dc6a51715803609456.ctex"]
+source_file="res://Arts/Other/fade.png"
+dest_files=["res://.godot/imported/fade.png-cc31f1c3081beb1d401959d552612530.ctex"]
 
 [params]
 

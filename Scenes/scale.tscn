@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
+[ext_resource type="Texture2D" uid="uid://wodajpniv6ht" path="res://Arts/Scale/ScaleStick.png" id="2_2n2oa"]
 [ext_resource type="Script" path="res://Scripts/Gear.gd" id="2_fjj23"]
 [ext_resource type="Script" path="res://Scripts/pinJoint.gd" id="2_jwlwy"]
-[ext_resource type="Texture2D" uid="uid://wodajpniv6ht" path="res://Arts/ScaleStick.png" id="2_u7wsk"]
-[ext_resource type="Texture2D" uid="uid://d1q4do1xt0c6n" path="res://Arts/Scale Egg.png" id="3_e824m"]
+[ext_resource type="Texture2D" uid="uid://d1q4do1xt0c6n" path="res://Arts/Scale/Scale Egg.png" id="3_716o8"]
 [ext_resource type="PackedScene" uid="uid://dkvkblshax1wb" path="res://Scenes/pan.tscn" id="3_ijno2"]
-[ext_resource type="Texture2D" uid="uid://uojnfhneeiro" path="res://Arts/SideGear.png" id="3_muvup"]
-[ext_resource type="Texture2D" uid="uid://bkpqry6y0uf6u" path="res://Arts/TopGear.png" id="4_c1i15"]
-[ext_resource type="Texture2D" uid="uid://dcbfeew1qup8b" path="res://Arts/Arm.png" id="4_oggc7"]
+[ext_resource type="Texture2D" uid="uid://dcbfeew1qup8b" path="res://Arts/Scale/Arm.png" id="4_k2g1b"]
 [ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="4_plrco"]
 [ext_resource type="Script" path="res://Scripts/Rope.gd" id="6_ryjkn"]
 [ext_resource type="Texture2D" uid="uid://dmnfeut3vh4sn" path="res://Arts/Rope.png" id="7_forb6"]
+[ext_resource type="Texture2D" uid="uid://uojnfhneeiro" path="res://Arts/Scale/SideGear.png" id="8_0ls58"]
+[ext_resource type="Texture2D" uid="uid://bkpqry6y0uf6u" path="res://Arts/Scale/TopGear.png" id="9_xu81g"]
 [ext_resource type="Material" uid="uid://c6ra8yj3582kq" path="res://Materials/ThinBlackOutlineMaterial.tres" id="12_h85ji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dqaw"]
@@ -42,22 +42,22 @@ countDownTime = 1000.0
 [node name="ScaleStick" type="Sprite2D" parent="."]
 position = Vector2(0, -16.2712)
 scale = Vector2(0.05, 0.0251969)
-texture = ExtResource("2_u7wsk")
+texture = ExtResource("2_2n2oa")
 
 [node name="ScaleStick2" type="Sprite2D" parent="."]
 position = Vector2(0, 11.8439)
 scale = Vector2(0.05, 0.0251969)
-texture = ExtResource("2_u7wsk")
+texture = ExtResource("2_2n2oa")
 
 [node name="ScaleEgg" type="Sprite2D" parent="."]
 position = Vector2(0, -2.182)
 scale = Vector2(0.04, 0.04)
-texture = ExtResource("3_e824m")
+texture = ExtResource("3_716o8")
 
 [node name="Arm2" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_oggc7")
+texture = ExtResource("4_k2g1b")
 
 [node name="ImovingRopes" type="Node2D" parent="."]
 position = Vector2(-15.4861, -16.3944)
@@ -106,7 +106,7 @@ pan = NodePath("../Left Pan")
 rotationAmountPerFrame = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftGear"]
-texture = ExtResource("3_muvup")
+texture = ExtResource("8_0ls58")
 
 [node name="TopGear" type="Node2D" parent="." node_paths=PackedStringArray("pan")]
 position = Vector2(0.00115202, -24.3465)
@@ -117,7 +117,7 @@ rotationAmountPerFrame = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="TopGear"]
 position = Vector2(4.00377, -2.75677)
-texture = ExtResource("4_c1i15")
+texture = ExtResource("9_xu81g")
 
 [node name="LeftRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
 position = Vector2(-24.5, -19.8007)
@@ -213,7 +213,7 @@ pan = NodePath("../Left Pan")
 rotationAmountPerFrame = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="RightGear"]
-texture = ExtResource("3_muvup")
+texture = ExtResource("8_0ls58")
 
 [node name="RightRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
 position = Vector2(24.5, -19.8007)

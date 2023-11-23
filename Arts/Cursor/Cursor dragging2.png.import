@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nummug6d5rgl"
-path="res://.godot/imported/Direction Indicator arrow.png-6bffe19ee8ff43888779e4b629a4c5c1.ctex"
+uid="uid://cb425e2j3ysse"
+path="res://.godot/imported/Cursor dragging2.png-e98e2a9ec7fd6ec6a04b8e955fe07fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Direction Indicator arrow.png"
-dest_files=["res://.godot/imported/Direction Indicator arrow.png-6bffe19ee8ff43888779e4b629a4c5c1.ctex"]
+source_file="res://Arts/Cursor/Cursor dragging2.png"
+dest_files=["res://.godot/imported/Cursor dragging2.png-e98e2a9ec7fd6ec6a04b8e955fe07fed.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c46o3le2xaopt"
-path="res://.godot/imported/CollideEffect.png-c0b6f7c964a7f4d82437489061adbcfc.ctex"
+uid="uid://dlxqr0mn6pr4l"
+path="res://.godot/imported/Gear4.png-47e49ac75c567fb3682eb413ca1da1a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/CollideEffect.png"
-dest_files=["res://.godot/imported/CollideEffect.png-c0b6f7c964a7f4d82437489061adbcfc.ctex"]
+source_file="res://Arts/Background/Gear4.png"
+dest_files=["res://.godot/imported/Gear4.png-47e49ac75c567fb3682eb413ca1da1a6.ctex"]
 
 [params]
 

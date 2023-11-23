@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd4b24t3l1fx"]
+
+[ext_resource type="Texture2D" uid="uid://kae4mo23htb4" path="res://Arts/Background/Background Color.png" id="1_yr4xg"]
+[ext_resource type="Texture2D" uid="uid://2te27hisiswo" path="res://Arts/Background/Gear1.png" id="2_p73ft"]
+[ext_resource type="Texture2D" uid="uid://tnk6dadnd7ll" path="res://Arts/Background/Gear2.png" id="3_2088n"]
+[ext_resource type="Texture2D" uid="uid://dsudnii8wu6g6" path="res://Arts/Background/Gear3.png" id="4_eyj6u"]
+[ext_resource type="Texture2D" uid="uid://dlxqr0mn6pr4l" path="res://Arts/Background/Gear4.png" id="5_b5qjt"]
+
+[node name="BackGround" type="Node2D"]
+
+[node name="BackgroundColor" type="Sprite2D" parent="."]
+position = Vector2(565, 397)
+texture = ExtResource("1_yr4xg")
+
+[node name="Gear1" type="Sprite2D" parent="."]
+position = Vector2(212, 146)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p73ft")
+
+[node name="Gear2" type="Sprite2D" parent="."]
+position = Vector2(477, 411)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_2088n")
+
+[node name="Gear3" type="Sprite2D" parent="."]
+position = Vector2(850, 379)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_eyj6u")
+
+[node name="Gear4" type="Sprite2D" parent="."]
+position = Vector2(625, 489)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_b5qjt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Gear1 s" type="Node2D" parent="."]
+
+[node name="Gear2 s" type="Node2D" parent="."]
+
+[node name="Gear3 s" type="Node2D" parent="."]
+
+[node name="Gear4 s" type="Node2D" parent="."]

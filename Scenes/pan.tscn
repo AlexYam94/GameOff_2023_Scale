@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dkvkblshax1wb"]
 
 [ext_resource type="Script" path="res://Scripts/Pan.gd" id="1_d4ivf"]
-[ext_resource type="Texture2D" uid="uid://d3ml3ei612b73" path="res://Arts/Pan.png" id="2_dbxqs"]
+[ext_resource type="Texture2D" uid="uid://d3ml3ei612b73" path="res://Arts/Scale/Pan.png" id="2_dbxqs"]
 [ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="2_mehxc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwa0v"]

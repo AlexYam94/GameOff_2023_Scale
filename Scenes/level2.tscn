@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://758tbb5s8v5o"]
+[gd_scene load_steps=5 format=3 uid="uid://758tbb5s8v5o"]
 
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_qwmnv"]
-[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight.tscn" id="2_k742i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
 
@@ -15,34 +14,6 @@ size = Vector2(9.3625, 215.5)
 
 [node name="Scale" parent="." instance=ExtResource("1_qwmnv")]
 position = Vector2(0, -16)
-
-[node name="Weight" parent="." instance=ExtResource("2_k742i")]
-position = Vector2(-58, 93)
-collision_layer = 4
-collision_mask = 4
-can_sleep = false
-stopDistance = 3.0
-
-[node name="Weight4" parent="." instance=ExtResource("2_k742i")]
-position = Vector2(-44, 93)
-collision_layer = 4
-collision_mask = 4
-can_sleep = false
-stopDistance = 3.0
-
-[node name="Weight2" parent="." instance=ExtResource("2_k742i")]
-position = Vector2(58, 95)
-collision_layer = 4
-collision_mask = 4
-can_sleep = false
-stopDistance = 3.0
-
-[node name="Weight3" parent="." instance=ExtResource("2_k742i")]
-position = Vector2(45, 95)
-collision_layer = 4
-collision_mask = 4
-can_sleep = false
-stopDistance = 3.0
 
 [node name="Wall" type="RigidBody2D" parent="."]
 position = Vector2(2, 105)

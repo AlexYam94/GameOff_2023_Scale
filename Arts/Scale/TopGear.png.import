@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ml3ei612b73"
-path="res://.godot/imported/Pan.png-b867327482a628aafc1215f0d50e821d.ctex"
+uid="uid://bkpqry6y0uf6u"
+path="res://.godot/imported/TopGear.png-1a5d00922787b543ba4c9fcc82b81ff7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Pan.png"
-dest_files=["res://.godot/imported/Pan.png-b867327482a628aafc1215f0d50e821d.ctex"]
+source_file="res://Arts/Scale/TopGear.png"
+dest_files=["res://.godot/imported/TopGear.png-1a5d00922787b543ba4c9fcc82b81ff7.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dejfl8w3s6fg5"]
 
-[ext_resource type="Material" uid="uid://cvpl1gtvouo7j" path="res://Materials/SawTransitionMaterial.tres" id="1_mj2ao"]
-[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="2_1vflj"]
+[ext_resource type="Material" uid="uid://boswqnnv75dbs" path="res://Materials/SliceAndFadeMaterial.tres" id="1_8ip5t"]
+[ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="2_fvbj7"]
 
 [node name="Fade TEST" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("1_mj2ao")
-texture = ExtResource("2_1vflj")
+material = ExtResource("1_8ip5t")
+texture = ExtResource("2_fvbj7")

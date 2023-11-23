@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wodajpniv6ht"
-path="res://.godot/imported/ScaleStick.png-820e310b6940827e5f4a4e67a1d870f4.ctex"
+uid="uid://dsudnii8wu6g6"
+path="res://.godot/imported/Gear3.png-507c2ec0c747f8e4e983e51fbbcbbacc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/ScaleStick.png"
-dest_files=["res://.godot/imported/ScaleStick.png-820e310b6940827e5f4a4e67a1d870f4.ctex"]
+source_file="res://Arts/Background/Gear3.png"
+dest_files=["res://.godot/imported/Gear3.png-507c2ec0c747f8e4e983e51fbbcbbacc.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1q4do1xt0c6n"
-path="res://.godot/imported/Scale Egg.png-e58146ce29e9a9219cd6b2985449aa29.ctex"
+path="res://.godot/imported/Scale Egg.png-e5e00a9d7b57563bdf776d63d856b99f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Scale Egg.png"
-dest_files=["res://.godot/imported/Scale Egg.png-e58146ce29e9a9219cd6b2985449aa29.ctex"]
+source_file="res://Arts/Scale/Scale Egg.png"
+dest_files=["res://.godot/imported/Scale Egg.png-e5e00a9d7b57563bdf776d63d856b99f.ctex"]
 
 [params]
 

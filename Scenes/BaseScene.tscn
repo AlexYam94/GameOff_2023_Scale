@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://d175puobirwmb"]
+[gd_scene load_steps=15 format=3 uid="uid://d175puobirwmb"]
 
 [ext_resource type="Script" path="res://Scripts/LevelLoader.gd" id="1_77kdu"]
 [ext_resource type="PackedScene" uid="uid://i1qwhe5h610m" path="res://Scenes/level1.tscn" id="2_axeju"]
 [ext_resource type="PackedScene" uid="uid://758tbb5s8v5o" path="res://Scenes/level2.tscn" id="3_rc5oc"]
 [ext_resource type="PackedScene" uid="uid://dg8kx41ymnch1" path="res://Scenes/end.tscn" id="4_va1b8"]
-[ext_resource type="Material" uid="uid://boswqnnv75dbs" path="res://Materials/SliceAndFadeMaterial.tres" id="5_mn2y7"]
-[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="5_tas0t"]
+[ext_resource type="Material" uid="uid://cvpl1gtvouo7j" path="res://Materials/SawTransitionMaterial.tres" id="6_sjgwv"]
 [ext_resource type="Script" path="res://Scripts/CursorAnimation.gd" id="7_ai2me"]
-[ext_resource type="Texture2D" uid="uid://f0rh611oynrq" path="res://Arts/Cursor Selected.png" id="8_dubch"]
+[ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="7_p3dvf"]
+[ext_resource type="Texture2D" uid="uid://b5rr2xeplvj1o" path="res://Arts/Cursor/Cursor idle.png" id="8_an3l7"]
+[ext_resource type="Texture2D" uid="uid://wutwl057gxv1" path="res://Arts/Cursor/Cursor hover over.png" id="9_nfdxu"]
+[ext_resource type="Texture2D" uid="uid://civ4hb362jfdu" path="res://Arts/Cursor/Cursor dragging1.png" id="10_j862j"]
+[ext_resource type="Texture2D" uid="uid://cb425e2j3ysse" path="res://Arts/Cursor/Cursor dragging2.png" id="11_gmxpc"]
+[ext_resource type="Texture2D" uid="uid://5a2ny0vw5jve" path="res://Arts/Cursor/Cursor dragging3.png" id="12_1hbod"]
+[ext_resource type="Texture2D" uid="uid://2bmkpcmck8ks" path="res://Arts/Cursor/Cursor dragging4.png" id="13_xs0nx"]
+[ext_resource type="Texture2D" uid="uid://ccy7dt4ndmvx5" path="res://Arts/Cursor/Cursor dragging5.png" id="14_wtcis"]
 
 [node name="Root" type="Node2D"]
 
@@ -15,16 +21,20 @@
 z_index = -20
 script = ExtResource("1_77kdu")
 levels = Array[PackedScene]([ExtResource("2_axeju"), ExtResource("3_rc5oc"), ExtResource("4_va1b8")])
-fadeMat = Array[ShaderMaterial]([ExtResource("5_mn2y7")])
+fadeMat = Array[ShaderMaterial]([ExtResource("6_sjgwv")])
 fadeSprite = NodePath("../FadeInFadeOut")
 
 [node name="FadeInFadeOut" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("5_tas0t")
+position = Vector2(-1.66893e-06, -7.15256e-07)
+scale = Vector2(0.225, 0.126563)
+texture = ExtResource("7_p3dvf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="CursorAnimation" type="Node2D" parent="."]
 script = ExtResource("7_ai2me")
-grapFrames = Array[Resource]([ExtResource("8_dubch")])
+idleSprite = ExtResource("8_an3l7")
+hoverSprite = ExtResource("9_nfdxu")
+grapFrames = Array[Resource]([ExtResource("10_j862j"), ExtResource("11_gmxpc"), ExtResource("12_1hbod"), ExtResource("13_xs0nx"), ExtResource("14_wtcis")])
+frameDuration = 0.05

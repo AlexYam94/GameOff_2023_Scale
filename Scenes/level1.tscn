@@ -8,10 +8,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62sd6"]
-size = Vector2(568, 37)
+size = Vector2(568, 83)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3kyc"]
-size = Vector2(9.3625, 215.5)
+size = Vector2(59.3625, 215.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,7 +31,7 @@ freeze = true
 script = ExtResource("2_lsdm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(-8.00002, 16.5)
+position = Vector2(-8.00002, -6.5)
 shape = SubResource("RectangleShape2D_62sd6")
 
 [node name="Wall2" type="RigidBody2D" parent="." groups=["collidable"]]
@@ -47,7 +47,7 @@ freeze = true
 script = ExtResource("2_lsdm4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
-position = Vector2(0.318748, 49.25)
+position = Vector2(25.3187, 49.25)
 shape = SubResource("RectangleShape2D_p3kyc")
 
 [node name="Wall3" type="RigidBody2D" parent="." groups=["collidable"]]
@@ -67,14 +67,16 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_p3kyc")
 
 [node name="Weight" parent="." instance=ExtResource("3_7jmg6")]
-position = Vector2(21, 77)
+position = Vector2(24, -52)
 distanceDecayFactor = 40.0
 
 [node name="Weight2" parent="." instance=ExtResource("3_7jmg6")]
-position = Vector2(43, 65)
+position = Vector2(26, -107)
 distanceDecayFactor = 40.0
 
 [node name="DragonSlayer" parent="." instance=ExtResource("4_thc62")]
-position = Vector2(-24, -50)
+position = Vector2(-94, -59)
+gravity_scale = 0.2
+linear_velocity = Vector2(0, -100)
 
 [editable path="Scale"]
