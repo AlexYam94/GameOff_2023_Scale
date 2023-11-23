@@ -129,6 +129,15 @@ func _unhandled_input(event):
 		if held_object and !event.pressed:
 			held_object.drop(Input.get_last_mouse_velocity())
 			held_object = null		
+			
+func _on_mouse_entered():
+	if !held_object:
+		SignalManager.emit_signal(SignalManager.hoverOverSignal)
+
+
+func _on_mouse_exited():
+	if !held_object:
+		SignalManager.emit_signal(SignalManager.releaseObjectSignal)
 
 
 func _on_body_exited(body):
@@ -144,3 +153,5 @@ func _on_body_exited(body):
 		if (body as DragAndDrop).pan == pan:
 			pan.unregisterObj(self)
 			print("exit obj")
+
+
