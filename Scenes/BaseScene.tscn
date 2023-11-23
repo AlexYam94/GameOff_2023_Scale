@@ -25,8 +25,8 @@ fadeMat = Array[ShaderMaterial]([ExtResource("6_sjgwv")])
 fadeSprite = NodePath("../FadeInFadeOut")
 
 [node name="FadeInFadeOut" type="Sprite2D" parent="."]
-position = Vector2(-1.66893e-06, -7.15256e-07)
-scale = Vector2(0.225, 0.126563)
+position = Vector2(10.5, -7.15256e-07)
+scale = Vector2(0.241406, 0.126563)
 texture = ExtResource("7_p3dvf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
