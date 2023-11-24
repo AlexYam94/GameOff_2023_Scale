@@ -3,6 +3,7 @@ extends Node2D
 
 @export var pan : Pan
 @export var rotationAmountPerFrame : float
+@export var ropeSound : AudioStreamPlayer2D
 
 var lastDiff : float
 
@@ -30,9 +31,16 @@ func _physics_process(delta):
 	if(lastDiff < diff):
 		#Rotate right
 		rotate(-diff * delta * rotationAmountPerFrame)
+		if(ropeSound and not ropeSound.playing):
+			ropeSound.play()
 	elif(lastDiff > diff):
 #		#Rotate left
 		rotate(diff * delta * rotationAmountPerFrame)
+		if(ropeSound and not ropeSound.playing):
+			ropeSound.play()
+	else:
+		if(ropeSound):
+			ropeSound.stop()
 
 	lastDiff = diff
 	pass
