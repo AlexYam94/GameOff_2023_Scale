@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsyhmmvxevwih"]
+
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_xvny8"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_6wi1q"]
+[ext_resource type="Texture2D" uid="uid://r6uhqvqsnbin" path="res://Arts/weight.png" id="3_f1cpk"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_bc3ff"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="5_tony6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
+size = Vector2(32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m8de"]
+size = Vector2(16.5479, 4.12311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6whex"]
+size = Vector2(15.398, 4.12226)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmysd"]
+size = Vector2(0.999843, 1.99969)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_103md"]
+size = Vector2(14, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gawu"]
+size = Vector2(30, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uueu"]
+size = Vector2(26, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ueba"]
+size = Vector2(22, 1)
+
+[node name="Weight 1kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_tb51x")
+gravity_scale = 0.1
+continuous_cd = 1
+max_contacts_reported = 10
+contact_monitor = true
+angular_damp = 30.606
+script = ExtResource("1_xvny8")
+force = 100.0
+stopDistance = 0.0
+distanceDecayFactor = 2.0
+velocityDecayValue = 1.0
+contactEffect = ExtResource("2_6wi1q")
+directionAndVelocityIndicator = NodePath("DirectionIndicator")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3lujh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5269, 11.9942)
+rotation = 0.244873
+shape = SubResource("RectangleShape2D_1m8de")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(7.96881, 12.1324)
+rotation = -0.245082
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6whex")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(0.48211, 14.9914)
+rotation = -0.0177368
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xmysd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_103md")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(-1.98952e-13, -12.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1gawu")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(1.98952e-13, -13.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0uueu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2ueba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+texture = ExtResource("3_f1cpk")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_bc3ff")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_tony6")]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

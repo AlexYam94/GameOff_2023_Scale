@@ -19,7 +19,6 @@ var startLoadNextLevel : bool = false
 func _ready():
 	countDownTimer = countDownTime
 	find_nodes_in_group(get_tree().root)
-	pass
 		
 
 

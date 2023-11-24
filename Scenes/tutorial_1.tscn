@@ -1,56 +1,85 @@
-[gd_scene load_steps=18 format=3 uid="uid://d175puobirwmb"]
+[gd_scene load_steps=9 format=3 uid="uid://b4rep2wvxvbro"]
 
-[ext_resource type="Script" path="res://Scripts/LevelLoader.gd" id="1_77kdu"]
-[ext_resource type="PackedScene" uid="uid://b4rep2wvxvbro" path="res://Scenes/tutorial_1.tscn" id="2_60umm"]
-[ext_resource type="PackedScene" uid="uid://i1qwhe5h610m" path="res://Scenes/level1.tscn" id="2_axeju"]
-[ext_resource type="PackedScene" uid="uid://758tbb5s8v5o" path="res://Scenes/level2.tscn" id="3_rc5oc"]
-[ext_resource type="PackedScene" uid="uid://dg8kx41ymnch1" path="res://Scenes/end.tscn" id="4_va1b8"]
-[ext_resource type="Material" uid="uid://cvpl1gtvouo7j" path="res://Materials/SawTransitionMaterial.tres" id="6_sjgwv"]
-[ext_resource type="Script" path="res://Scripts/CursorAnimation.gd" id="7_ai2me"]
-[ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="7_p3dvf"]
-[ext_resource type="Texture2D" uid="uid://b5rr2xeplvj1o" path="res://Arts/Cursor/Cursor idle.png" id="8_an3l7"]
-[ext_resource type="Texture2D" uid="uid://wutwl057gxv1" path="res://Arts/Cursor/Cursor hover over.png" id="9_nfdxu"]
-[ext_resource type="Texture2D" uid="uid://civ4hb362jfdu" path="res://Arts/Cursor/Cursor dragging1.png" id="10_j862j"]
-[ext_resource type="Texture2D" uid="uid://cb425e2j3ysse" path="res://Arts/Cursor/Cursor dragging2.png" id="11_gmxpc"]
-[ext_resource type="Texture2D" uid="uid://5a2ny0vw5jve" path="res://Arts/Cursor/Cursor dragging3.png" id="12_1hbod"]
-[ext_resource type="Texture2D" uid="uid://2bmkpcmck8ks" path="res://Arts/Cursor/Cursor dragging4.png" id="13_xs0nx"]
-[ext_resource type="Texture2D" uid="uid://ccy7dt4ndmvx5" path="res://Arts/Cursor/Cursor dragging5.png" id="14_wtcis"]
-[ext_resource type="PackedScene" uid="uid://bd4b24t3l1fx" path="res://Scenes/back_ground.tscn" id="15_g8g2a"]
-[ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="16_3hmr0"]
+[ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_0ac8q"]
+[ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="2_c3iqs"]
+[ext_resource type="PackedScene" uid="uid://dc8oxg0j4rtfx" path="res://Scenes/light_bulb.tscn" id="3_225g7"]
+[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="4_6kai7"]
+[ext_resource type="Script" path="res://Scripts/Tutorial1 Event Trigger.gd" id="5_txk5e"]
 
-[node name="Root" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_decbk"]
+size = Vector2(22, 174)
 
-[node name="LevelLoader" type="Node2D" parent="." node_paths=PackedStringArray("fadeSprite")]
-z_index = -20
-script = ExtResource("1_77kdu")
-levels = Array[PackedScene]([ExtResource("2_60umm"), ExtResource("2_axeju"), ExtResource("3_rc5oc"), ExtResource("4_va1b8")])
-fadeMat = Array[ShaderMaterial]([ExtResource("6_sjgwv")])
-fadeSprite = NodePath("../FadeInFadeOut")
+[sub_resource type="Animation" id="Animation_jnryb"]
+resource_name = "tutorial 1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("light bulb:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[node name="FadeInFadeOut" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(10.5, -7.15256e-07)
-scale = Vector2(0.241406, 0.126563)
-texture = ExtResource("7_p3dvf")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocf0p"]
+_data = {
+"tutorial 1": SubResource("Animation_jnryb")
+}
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="Tutorial1" type="Node2D"]
 
-[node name="CursorAnimation" type="Node2D" parent="."]
-script = ExtResource("7_ai2me")
-idleSprite = ExtResource("8_an3l7")
-hoverSprite = ExtResource("9_nfdxu")
-grapFrames = Array[Resource]([ExtResource("10_j862j"), ExtResource("11_gmxpc"), ExtResource("12_1hbod"), ExtResource("13_xs0nx"), ExtResource("14_wtcis")])
-frameDuration = 0.05
+[node name="Scale" parent="." instance=ExtResource("1_0ac8q")]
 
-[node name="BackGround" parent="." instance=ExtResource("15_g8g2a")]
-z_index = -100
-position = Vector2(-115, -80)
-scale = Vector2(0.21, 0.21)
-
-[node name="TileMap" parent="." instance=ExtResource("16_3hmr0")]
+[node name="TileMap" parent="." instance=ExtResource("2_c3iqs")]
 position = Vector2(0, 34)
 layer_0/tile_data = PackedInt32Array(262137, 65536, 0, 262138, 65536, 0, 262139, 65536, 0, 262140, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0, 196611, 65536, 0, 196612, 65536, 0, 196613, 65536, 0, 196614, 65536, 0, 196615, 65536, 0, 196616, 65536, 0, 196617, 196608, 0, 327673, 589824, 0, 327674, 589824, 0, 327675, 589824, 0, 327676, 589824, 0, 327677, 589824, 0, 327678, 589824, 0, 327679, 589824, 0, 262144, 589824, 0, 262145, 589824, 0, 262146, 589824, 0, 262147, 589824, 0, 262148, 589824, 0, 262149, 589824, 0, 262150, 589824, 0, 262151, 589824, 0, 262152, 589824, 0, 262153, 655360, 0, 393209, 786432, 0, 393210, 786432, 0, 393211, 786432, 0, 393212, 786432, 0, 393213, 786432, 0, 393214, 786432, 0, 393215, 786432, 0, 327680, 786432, 0, 327681, 786432, 0, 327682, 786432, 0, 327683, 786432, 0, 327684, 786432, 0, 327685, 786432, 0, 327686, 786432, 0, 327687, 786432, 0, 327688, 786432, 0, 327689, 851968, 0, 393224, 983040, 0, 393223, 983040, 0, 393222, 983040, 0, 393221, 983040, 0, 393220, 983040, 0, 393219, 983040, 0, 393218, 983040, 0, 393217, 983040, 0, 393216, 983040, 0, 458751, 983040, 0, 458750, 983040, 0, 458749, 983040, 0, 458748, 983040, 0, 458747, 983040, 0, 458746, 983040, 0, 458745, 983040, 0, 393225, 983040, 0, 262134, 131072, 0, 327670, 524288, 0, 393206, 720896, 0, 458742, 917504, 0, 262136, 65536, 0, 327672, 589824, 0, 393208, 786432, 0, 458744, 983040, 0, 262135, 65536, 0, 327671, 589824, 0, 393207, 786432, 0, 458743, 983040, 0, -458743, 393216, 0, -393207, 458752, 0, -327671, 393216, 0, -262135, 458752, 0, -196599, 393216, 0, -131063, 458752, 0, -65527, 393216, 0, 9, 458752, 0, 65545, 393216, 0, 131081, 458752, 0, -458744, 458752, 0, -393208, 393216, 0, -327672, 458752, 0, -262136, 393216, 0, -196600, 458752, 0, -131064, 393216, 0, -65528, 458752, 0, 8, 393216, 0, 65544, 458752, 0, 131080, 393216, 0, -393226, 327680, 0, -327690, 262144, 0, -262154, 327680, 0, -196618, 262144, 0, -131082, 327680, 0, -65546, 262144, 0, -10, 327680, 0, 65526, 262144, 0, 131062, 327680, 0, 196598, 262144, 0, -393225, 262144, 0, -327689, 327680, 0, -262153, 262144, 0, -196617, 327680, 0, -131081, 262144, 0, -65545, 327680, 0, -9, 262144, 0, 65527, 327680, 0, 131063, 262144, 0, 196599, 327680, 0, -524298, 458752, 0, -524297, 458752, 0, -524296, 458752, 0, -524295, 458752, 0, -524294, 458752, 0, -524293, 458752, 0, -524292, 458752, 0, -524291, 458752, 0, -524290, 458752, 0, -524289, 458752, 0, -589824, 458752, 0, -589823, 458752, 0, -589822, 458752, 0, -589821, 458752, 0, -589820, 458752, 0, -589819, 458752, 0, -589818, 458752, 0, -589817, 458752, 0, -589816, 458752, 0, -589815, 458752, 0, -524279, 458752, 0, -458762, 458752, 0, -458761, 458752, 0, -524280, 458752, 0, -589834, 458752, 0, -589833, 458752, 0, -589832, 458752, 0, -589831, 458752, 0, -589830, 458752, 0, -589829, 458752, 0, -589828, 458752, 0, -589827, 458752, 0, -589826, 458752, 0, -589825, 458752, 0, -655360, 458752, 0, -655359, 458752, 0, -655358, 458752, 0, -655357, 458752, 0, -655356, 458752, 0, -655355, 458752, 0, -655354, 458752, 0, -655353, 458752, 0, -655352, 458752, 0, -655351, 458752, 0)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+[node name="light bulb" parent="." instance=ExtResource("3_225g7")]
+visible = false
+position = Vector2(-113, 44)
+
+[node name="light bulb2" parent="." instance=ExtResource("3_225g7")]
+visible = false
+position = Vector2(-50, 10)
+
+[node name="light bulb3" parent="." instance=ExtResource("3_225g7")]
+position = Vector2(-46, 61)
+
+[node name="wall" type="StaticBody2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+position = Vector2(10, -6)
+shape = SubResource("RectangleShape2D_decbk")
+
+[node name="light bulb4" parent="." instance=ExtResource("3_225g7")]
+visible = false
+position = Vector2(50, 10)
+
+[node name="Weight 1kg" parent="." instance=ExtResource("4_6kai7")]
+position = Vector2(-90, 67)
+
+[node name="Weight 1kg2" parent="." instance=ExtResource("4_6kai7")]
+position = Vector2(90, 67)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "tutorial 1"
+libraries = {
+"": SubResource("AnimationLibrary_ocf0p")
+}
+
+[node name="Tutorial1 Event Trigger" type="Node2D" parent="." node_paths=PackedStringArray("light1", "light2", "light3", "wall")]
+script = ExtResource("5_txk5e")
+nextEventInterval = 1.0
+totalEvent = 2
+light1 = NodePath("../light bulb")
+light2 = NodePath("../light bulb2")
+light3 = NodePath("../light bulb3")
+wall = NodePath("../wall")
+
+[connection signal="clicked" from="Weight 1kg" to="Tutorial1 Event Trigger" method="_on_weight_1_kg_clicked"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tnk6dadnd7ll"
-path="res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"
+uid="uid://1yywcv2f1je4"
+path="res://.godot/imported/2d_lights_and_shadows_neutral_point_light.webp-1c70cc45f0c2a0ae1c9e5d9325c4f630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Background/Gear1.png"
-dest_files=["res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"]
+source_file="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp"
+dest_files=["res://.godot/imported/2d_lights_and_shadows_neutral_point_light.webp-1c70cc45f0c2a0ae1c9e5d9325c4f630.ctex"]
 
 [params]
 

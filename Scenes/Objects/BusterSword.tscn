@@ -1,29 +1,32 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjumqdexv0tln"]
+[gd_scene load_steps=14 format=3 uid="uid://cp7io23fuu10v"]
 
-[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_mgsrs"]
-[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_eposh"]
-[ext_resource type="Texture2D" uid="uid://dg46b8c63fnbh" path="res://Arts/Guts Dragon Slayer.png" id="3_jwviu"]
-[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="3_segch"]
-[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="3_u3d3a"]
-[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="6_tgt3y"]
-[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="7_ux8x3"]
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_78cah"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_c54v3"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="3_bhwhw"]
+[ext_resource type="Texture2D" uid="uid://doix0bthci2bc" path="res://Arts/Cloud Buster Sword.png" id="4_p8qws"]
+[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="5_c6sj7"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="6_ojelt"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="7_3gn2x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26xdl"]
-size = Vector2(11.3251, 30.4104)
+size = Vector2(12.6361, 22.5327)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkmt5"]
-size = Vector2(5.55079, 7.38664)
+size = Vector2(13.8115, 3.6132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mn0p"]
-size = Vector2(7.27705, 7.22252)
+size = Vector2(4.43211, 7.12839)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w21vy"]
+size = Vector2(3.44778, 2.86225)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07klv"]
 size = Vector2(2.84009, 9.20972)
 
-[node name="DragonSlayer" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+[node name="BusterSword" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
@@ -34,28 +37,33 @@ gravity_scale = 0.1
 continuous_cd = 1
 max_contacts_reported = 10
 contact_monitor = true
-script = ExtResource("1_mgsrs")
+script = ExtResource("1_78cah")
 stopDistance = 0.0
 distanceDecayFactor = 40.0
 velocityDecayValue = 1.0
 nonFacingCursorFactor = 2.0
-contactEffect = ExtResource("2_eposh")
+contactEffect = ExtResource("2_c54v3")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.45181, -1.25842)
+position = Vector2(0.896808, 1.97085)
 rotation = -0.793716
 shape = SubResource("RectangleShape2D_26xdl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-12.2142, -13)
-rotation = -1.60626
+position = Vector2(-9.80663, -7.98451)
+rotation = -1.59
 shape = SubResource("RectangleShape2D_pkmt5")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-12.2142, -12)
-rotation = -0.0344161
+position = Vector2(-6.93735, -10.9468)
+rotation = -0.760875
 shape = SubResource("RectangleShape2D_5mn0p")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-7.73834, -7.22519)
+rotation = -0.760875
+shape = SubResource("RectangleShape2D_w21vy")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(12.54, 12.75)
@@ -63,20 +71,20 @@ rotation = -0.793716
 shape = SubResource("RectangleShape2D_07klv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-material = ExtResource("3_u3d3a")
+material = ExtResource("3_bhwhw")
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_jwviu")
+texture = ExtResource("4_p8qws")
 
 [node name="Indicator" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(4, -1)
 scale = Vector2(0.1, 0.01)
-texture = ExtResource("3_segch")
+texture = ExtResource("5_c6sj7")
 offset = Vector2(50, 0)
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_tgt3y")]
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_ojelt")]
 
-[node name="DirectionIndicator" parent="." instance=ExtResource("7_ux8x3")]
+[node name="DirectionIndicator" parent="." instance=ExtResource("7_3gn2x")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

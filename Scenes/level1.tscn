@@ -1,82 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://i1qwhe5h610m"]
+[gd_scene load_steps=5 format=3 uid="uid://i1qwhe5h610m"]
 
-[ext_resource type="Script" path="res://Scripts/Wall.gd" id="2_lsdm4"]
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="2_r8ljl"]
-[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight.tscn" id="3_7jmg6"]
 [ext_resource type="PackedScene" uid="uid://cjumqdexv0tln" path="res://Scenes/Objects/dragonSlayer.tscn" id="4_thc62"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62sd6"]
-size = Vector2(568, 83)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3kyc"]
-size = Vector2(59.3625, 215.5)
+[ext_resource type="PackedScene" uid="uid://cp7io23fuu10v" path="res://Scenes/Objects/BusterSword.tscn" id="5_y4o0g"]
+[ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_1x3cw"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Scale" parent="." instance=ExtResource("2_r8ljl")]
-position = Vector2(0, -16)
-
-[node name="Wall" type="RigidBody2D" parent="." groups=["collidable"]]
-position = Vector2(2, 105)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
-script = ExtResource("2_lsdm4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(-8.00002, -6.5)
-shape = SubResource("RectangleShape2D_62sd6")
-
-[node name="Wall2" type="RigidBody2D" parent="." groups=["collidable"]]
-position = Vector2(-190, -9)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
-script = ExtResource("2_lsdm4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
-position = Vector2(25.3187, 49.25)
-shape = SubResource("RectangleShape2D_p3kyc")
-
-[node name="Wall3" type="RigidBody2D" parent="." groups=["collidable"]]
-position = Vector2(190, 36)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
-script = ExtResource("2_lsdm4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_p3kyc")
-
-[node name="Weight" parent="." instance=ExtResource("3_7jmg6")]
-position = Vector2(24, -52)
-distanceDecayFactor = 40.0
-
-[node name="Weight2" parent="." instance=ExtResource("3_7jmg6")]
-position = Vector2(26, -107)
-distanceDecayFactor = 40.0
+position = Vector2(0, -1)
 
 [node name="DragonSlayer" parent="." instance=ExtResource("4_thc62")]
 position = Vector2(-94, -59)
 gravity_scale = 0.2
 linear_velocity = Vector2(0, -100)
+
+[node name="BusterSword" parent="." instance=ExtResource("5_y4o0g")]
+position = Vector2(43, -67)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 0)
+color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 0.8
+shadow_color = Color(0, 0, 0, 0.0117647)
+texture = ExtResource("6_1x3cw")
+texture_scale = 2.0
 
 [editable path="Scale"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://tpk7kc2i4gsq"]
+[gd_scene load_steps=24 format=3 uid="uid://tpk7kc2i4gsq"]
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="2_0l3k1"]
 [ext_resource type="Texture2D" uid="uid://wodajpniv6ht" path="res://Arts/Scale/ScaleStick.png" id="2_2n2oa"]
 [ext_resource type="Script" path="res://Scripts/Gear.gd" id="2_fjj23"]
 [ext_resource type="Script" path="res://Scripts/pinJoint.gd" id="2_jwlwy"]
@@ -13,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dmnfeut3vh4sn" path="res://Arts/Rope.png" id="7_forb6"]
 [ext_resource type="Texture2D" uid="uid://uojnfhneeiro" path="res://Arts/Scale/SideGear.png" id="8_0ls58"]
 [ext_resource type="Texture2D" uid="uid://bkpqry6y0uf6u" path="res://Arts/Scale/TopGear.png" id="9_xu81g"]
+[ext_resource type="AudioStream" uid="uid://blqjmn3ue5nuq" path="res://Sounds/rope.mp3" id="11_axobl"]
 [ext_resource type="Material" uid="uid://c6ra8yj3582kq" path="res://Materials/ThinBlackOutlineMaterial.tres" id="12_h85ji"]
+[ext_resource type="Script" path="res://Scripts/SoundEffect.gd" id="12_xlrl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dqaw"]
 size = Vector2(48, 2)
@@ -22,7 +25,7 @@ size = Vector2(48, 2)
 radius = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygpsg"]
-size = Vector2(2, 28.5)
+size = Vector2(17.5408, 18.73)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_va4sl"]
 rough = true
@@ -34,19 +37,24 @@ radius = 0.2
 size = Vector2(129, 8)
 
 [node name="Scale" type="Node2D" node_paths=PackedStringArray("leftPan", "rightPan")]
+position = Vector2(0, 15.977)
+scale = Vector2(2, 2)
 script = ExtResource("1_d8q6w")
 leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
-countDownTime = 1000.0
+countDownTime = 5.0
+pickableObjGroup = "pickable"
 
 [node name="ScaleStick" type="Sprite2D" parent="."]
+material = ExtResource("2_0l3k1")
 position = Vector2(0, -16.2712)
 scale = Vector2(0.05, 0.0251969)
 texture = ExtResource("2_2n2oa")
 
 [node name="ScaleStick2" type="Sprite2D" parent="."]
-position = Vector2(0, 11.8439)
-scale = Vector2(0.05, 0.0251969)
+material = ExtResource("2_0l3k1")
+position = Vector2(0, 18.1561)
+scale = Vector2(0.05, 0.0449224)
 texture = ExtResource("2_2n2oa")
 
 [node name="ScaleEgg" type="Sprite2D" parent="."]
@@ -55,6 +63,7 @@ scale = Vector2(0.04, 0.04)
 texture = ExtResource("3_716o8")
 
 [node name="Arm2" type="Sprite2D" parent="."]
+material = ExtResource("2_0l3k1")
 position = Vector2(0, -18)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_k2g1b")
@@ -103,21 +112,29 @@ position = Vector2(-19.1816, -17.6866)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("2_fjj23")
 pan = NodePath("../Left Pan")
-rotationAmountPerFrame = 0.3
+rotationAmountPerFrame = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftGear"]
+material = ExtResource("2_0l3k1")
 texture = ExtResource("8_0ls58")
 
-[node name="TopGear" type="Node2D" parent="." node_paths=PackedStringArray("pan")]
-position = Vector2(0.00115202, -24.3465)
+[node name="TopGear" type="Node2D" parent="." node_paths=PackedStringArray("pan", "ropeSound")]
+position = Vector2(0, -24.347)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("2_fjj23")
 pan = NodePath("../Left Pan")
 rotationAmountPerFrame = 0.1
+ropeSound = NodePath("../RopeSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="TopGear"]
-position = Vector2(4.00377, -2.75677)
+material = ExtResource("2_0l3k1")
+position = Vector2(0, -2.757)
 texture = ExtResource("9_xu81g")
+
+[node name="RopeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_axobl")
+volume_db = -40.0
+script = ExtResource("12_xlrl8")
 
 [node name="LeftRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
 position = Vector2(-24.5, -19.8007)
@@ -132,6 +149,7 @@ scale = Vector2(0.05, 0.093134)
 texture = ExtResource("7_forb6")
 
 [node name="Left Pan" parent="." instance=ExtResource("3_ijno2")]
+maxVelocity = 10.0
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
 position = Vector2(-24, -16)
@@ -173,7 +191,7 @@ lock_rotation = true
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Arm Counter Weight"]
-position = Vector2(0, 11.75)
+position = Vector2(0.111343, 6.21851)
 shape = SubResource("RectangleShape2D_ygpsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -210,9 +228,10 @@ position = Vector2(19.1116, -17.6866)
 scale = Vector2(0.05, 0.05)
 script = ExtResource("2_fjj23")
 pan = NodePath("../Left Pan")
-rotationAmountPerFrame = 0.3
+rotationAmountPerFrame = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="RightGear"]
+material = ExtResource("2_0l3k1")
 texture = ExtResource("8_0ls58")
 
 [node name="RightRope" type="Node2D" parent="." node_paths=PackedStringArray("connectedPan")]
@@ -229,3 +248,4 @@ texture = ExtResource("7_forb6")
 
 [node name="Right Pan" parent="." instance=ExtResource("3_ijno2")]
 position = Vector2(24, 9)
+maxVelocity = 10.0

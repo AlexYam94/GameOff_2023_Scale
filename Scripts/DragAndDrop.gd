@@ -97,20 +97,20 @@ func _on_body_entered(body):
 	#TODO:
 	#Play hit/smoke/dust effect
 	contactSound.play()
-	var otherShapes = body.get_shape()
-	if(body is DragAndDrop):
-		if((body as RigidBody2D).linear_velocity == Vector2.ZERO):
-			return
-	for collisionShape in collisionShapes:
-		for otherCollisionShape in otherShapes:
-			var shape = collisionShape.shape
-			var otherShape = otherCollisionShape.shape
-			var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
-			for point in contactsPoints:
-#				print(point)
-				var effect : Node2D = contactEffect.instantiate();
-				(effect as Node2D).global_position = point
-				get_parent().add_child(effect)
+#	var otherShapes = body.get_shape()
+#	if(body is DragAndDrop):
+#		if((body as RigidBody2D).linear_velocity == Vector2.ZERO):
+#			return
+#	for collisionShape in collisionShapes:
+#		for otherCollisionShape in otherShapes:
+#			var shape = collisionShape.shape
+#			var otherShape = otherCollisionShape.shape
+#			var contactsPoints = shape.collide_and_get_contacts(transform, otherShape, body.transform)
+#			for point in contactsPoints:
+##				print(point)
+#				var effect : Node2D = contactEffect.instantiate();
+#				(effect as Node2D).global_position = point
+#				get_parent().add_child(effect)
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tnk6dadnd7ll"
-path="res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"
+uid="uid://r6uhqvqsnbin"
+path="res://.godot/imported/weight.png-915d5b1ebb84f971bf7b1c0000eb22cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Background/Gear1.png"
-dest_files=["res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"]
+source_file="res://Arts/weight.png"
+dest_files=["res://.godot/imported/weight.png-915d5b1ebb84f971bf7b1c0000eb22cf.ctex"]
 
 [params]
 

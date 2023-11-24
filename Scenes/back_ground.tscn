@@ -1,43 +1,190 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd4b24t3l1fx"]
+[gd_scene load_steps=8 format=3 uid="uid://bd4b24t3l1fx"]
 
 [ext_resource type="Texture2D" uid="uid://kae4mo23htb4" path="res://Arts/Background/Background Color.png" id="1_yr4xg"]
-[ext_resource type="Texture2D" uid="uid://2te27hisiswo" path="res://Arts/Background/Gear1.png" id="2_p73ft"]
-[ext_resource type="Texture2D" uid="uid://tnk6dadnd7ll" path="res://Arts/Background/Gear2.png" id="3_2088n"]
-[ext_resource type="Texture2D" uid="uid://dsudnii8wu6g6" path="res://Arts/Background/Gear3.png" id="4_eyj6u"]
+[ext_resource type="Texture2D" uid="uid://tnk6dadnd7ll" path="res://Arts/Background/Gear1.png" id="2_p73ft"]
+[ext_resource type="Texture2D" uid="uid://dsudnii8wu6g6" path="res://Arts/Background/Gear2.png" id="3_2088n"]
+[ext_resource type="Texture2D" uid="uid://2te27hisiswo" path="res://Arts/Background/Gear3.png" id="4_eyj6u"]
 [ext_resource type="Texture2D" uid="uid://dlxqr0mn6pr4l" path="res://Arts/Background/Gear4.png" id="5_b5qjt"]
+
+[sub_resource type="Animation" id="Animation_lbyh7"]
+resource_name = "background"
+length = 18.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gear1 s/Gear1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gear2 s/Gear2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.523599, -6.80678]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gear3 s/Gear3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.261799, 6.02139]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gear4 s/Gear4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.174533, -6.10865]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gear1 s/Gear2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Gear2 s/Gear3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Gear4 s/Gear5:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.47993, 6.28319]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Gear3 s/Gear4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8nb6"]
+_data = {
+"background": SubResource("Animation_lbyh7")
+}
 
 [node name="BackGround" type="Node2D"]
 
 [node name="BackgroundColor" type="Sprite2D" parent="."]
+z_index = -10
 position = Vector2(565, 397)
 texture = ExtResource("1_yr4xg")
 
-[node name="Gear1" type="Sprite2D" parent="."]
-position = Vector2(212, 146)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_p73ft")
-
-[node name="Gear2" type="Sprite2D" parent="."]
-position = Vector2(477, 411)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_2088n")
-
-[node name="Gear3" type="Sprite2D" parent="."]
-position = Vector2(850, 379)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_eyj6u")
-
-[node name="Gear4" type="Sprite2D" parent="."]
-position = Vector2(625, 489)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_b5qjt")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "background"
+libraries = {
+"": SubResource("AnimationLibrary_s8nb6")
+}
 
 [node name="Gear1 s" type="Node2D" parent="."]
 
+[node name="Gear1" type="Sprite2D" parent="Gear1 s"]
+z_index = -10
+position = Vector2(228, 147)
+rotation = 1.26191
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p73ft")
+
+[node name="Gear2" type="Sprite2D" parent="Gear1 s"]
+z_index = -10
+position = Vector2(609, 148)
+rotation = 1.26191
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_p73ft")
+
 [node name="Gear2 s" type="Node2D" parent="."]
+
+[node name="Gear2" type="Sprite2D" parent="Gear2 s"]
+z_index = -10
+position = Vector2(419, 259)
+rotation = -1.78551
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_2088n")
+
+[node name="Gear3" type="Sprite2D" parent="Gear2 s"]
+z_index = -10
+position = Vector2(774, 294)
+rotation = -1.26191
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_2088n")
 
 [node name="Gear3 s" type="Node2D" parent="."]
 
+[node name="Gear3" type="Sprite2D" parent="Gear3 s"]
+z_index = -10
+position = Vector2(329, 398)
+rotation = 1.00011
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_eyj6u")
+
+[node name="Gear4" type="Sprite2D" parent="Gear3 s"]
+z_index = -10
+position = Vector2(939, 333)
+rotation = 1.26191
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_eyj6u")
+
 [node name="Gear4 s" type="Node2D" parent="."]
+
+[node name="Gear4" type="Sprite2D" parent="Gear4 s"]
+z_index = -10
+position = Vector2(234, 472)
+rotation = -1.08738
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_b5qjt")
+
+[node name="Gear5" type="Sprite2D" parent="Gear4 s"]
+z_index = -10
+position = Vector2(731, 428)
+rotation = 0.0792086
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_b5qjt")

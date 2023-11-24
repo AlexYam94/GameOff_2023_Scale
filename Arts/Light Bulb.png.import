@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tnk6dadnd7ll"
-path="res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"
+uid="uid://bxq8h3h4k15f6"
+path="res://.godot/imported/Light Bulb.png-66c112993793e9b000b63043e0095dc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Background/Gear1.png"
-dest_files=["res://.godot/imported/Gear1.png-5132ec5aeeca1f62d8c6585285f0dae6.ctex"]
+source_file="res://Arts/Light Bulb.png"
+dest_files=["res://.godot/imported/Light Bulb.png-66c112993793e9b000b63043e0095dc2.ctex"]
 
 [params]
 
