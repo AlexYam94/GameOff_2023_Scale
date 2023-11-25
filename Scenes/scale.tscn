@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://tpk7kc2i4gsq"]
+[gd_scene load_steps=28 format=3 uid="uid://tpk7kc2i4gsq"]
 
 [ext_resource type="Script" path="res://Scripts/scale.gd" id="1_d8q6w"]
 [ext_resource type="Script" path="res://Scripts/Arm.gd" id="1_va0ln"]
@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://blqjmn3ue5nuq" path="res://Sounds/rope.mp3" id="11_axobl"]
 [ext_resource type="Material" uid="uid://c6ra8yj3582kq" path="res://Materials/ThinBlackOutlineMaterial.tres" id="12_h85ji"]
 [ext_resource type="Script" path="res://Scripts/SoundEffect.gd" id="12_xlrl8"]
+[ext_resource type="FontFile" uid="uid://bl4y2v414l3gq" path="res://Fonts/herrfoch-font/HerrfochTrash-nXMV.ttf" id="18_1gikd"]
+[ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="18_mxopy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dqaw"]
 size = Vector2(48, 2)
@@ -25,7 +27,7 @@ size = Vector2(48, 2)
 radius = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygpsg"]
-size = Vector2(17.5408, 18.73)
+size = Vector2(2.25, 8.97049)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_va4sl"]
 rough = true
@@ -36,7 +38,14 @@ radius = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xuyv2"]
 size = Vector2(129, 8)
 
-[node name="Scale" type="Node2D" node_paths=PackedStringArray("leftPan", "rightPan")]
+[sub_resource type="Theme" id="Theme_wiw0x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_luvdb"]
+font = ExtResource("18_1gikd")
+font_size = 20
+font_color = Color(1, 0, 0, 1)
+
+[node name="Scale" type="Node2D" node_paths=PackedStringArray("leftPan", "rightPan", "diffText")]
 position = Vector2(0, 15.977)
 scale = Vector2(2, 2)
 script = ExtResource("1_d8q6w")
@@ -44,21 +53,23 @@ leftPan = NodePath("Left Pan")
 rightPan = NodePath("Right Pan")
 countDownTime = 5.0
 pickableObjGroup = "pickable"
+diffText = NodePath("Label")
+diffTextChangeInterval = 0.001
 
 [node name="ScaleStick" type="Sprite2D" parent="."]
 material = ExtResource("2_0l3k1")
-position = Vector2(0, -16.2712)
-scale = Vector2(0.05, 0.0251969)
+position = Vector2(0, -10.5104)
+scale = Vector2(0.05, 0.0431995)
 texture = ExtResource("2_2n2oa")
 
 [node name="ScaleStick2" type="Sprite2D" parent="."]
 material = ExtResource("2_0l3k1")
-position = Vector2(0, 18.1561)
-scale = Vector2(0.05, 0.0449224)
+position = Vector2(0, 23.8856)
+scale = Vector2(0.05, 0.0270176)
 texture = ExtResource("2_2n2oa")
 
 [node name="ScaleEgg" type="Sprite2D" parent="."]
-position = Vector2(0, -2.182)
+position = Vector2(0, 9.33965)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("3_716o8")
 
@@ -149,7 +160,6 @@ scale = Vector2(0.05, 0.093134)
 texture = ExtResource("7_forb6")
 
 [node name="Left Pan" parent="." instance=ExtResource("3_ijno2")]
-maxVelocity = 10.0
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
 position = Vector2(-24, -16)
@@ -191,7 +201,7 @@ lock_rotation = true
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Arm Counter Weight"]
-position = Vector2(0.111343, 6.21851)
+position = Vector2(1.19209e-07, 1.33876)
 shape = SubResource("RectangleShape2D_ygpsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -248,4 +258,23 @@ texture = ExtResource("7_forb6")
 
 [node name="Right Pan" parent="." instance=ExtResource("3_ijno2")]
 position = Vector2(24, 9)
-maxVelocity = 10.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0.125142, -10.0113)
+scale = Vector2(0.0137151, 0.00374294)
+texture = ExtResource("18_mxopy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.0
+offset_top = -13.0
+offset_right = 82.0
+offset_bottom = 18.0
+scale = Vector2(0.2, 0.2)
+theme = SubResource("Theme_wiw0x")
+theme_override_fonts/font = ExtResource("18_1gikd")
+theme_override_font_sizes/font_size = 15
+text = "0%"
+label_settings = SubResource("LabelSettings_luvdb")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1

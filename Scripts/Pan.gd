@@ -28,7 +28,8 @@ func _process(delta):
 	for obj in registeredObjs:
 		totalWeight += (obj as RigidBody2D).mass
 		
-#	print(totalWeight)
+	if(totalWeight != 0):
+		print(name  + ": "+ str(totalWeight))
 	
 func get_register_obj_count():
 	return registeredObjs.size()
@@ -41,8 +42,9 @@ func registerObj(body):
 		registeredObjs.append(body)
 	
 func unregisterObj(body):
-	if (registeredObjs.has(body)):
-		registeredObjs.erase(body)
+	var idx : int = registeredObjs.find(body)
+	if (idx >= 0):
+		registeredObjs.remove_at(idx)
 
 
 func _on_area_2d_body_entered(body):

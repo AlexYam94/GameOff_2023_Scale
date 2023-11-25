@@ -12,6 +12,9 @@ extends RigidBody2D
 @export var directionAndVelocityIndicatorScaleDivider : float = 3000
 @export var maxDirectionAndVelocityIndicatorScale : float = .8
 
+@export var playContactSoundEffect : bool = true
+
+@export var detectArea : Area2D
 
 signal clicked
 
@@ -42,6 +45,7 @@ func _ready():
 
 		
 func _physics_process(delta):
+	detectPan()
 	if held:
 		var mousePos = get_global_mouse_position()
 		var distance = global_position.distance_to(mousePos)
@@ -85,18 +89,44 @@ func drop(impulse=Vector2.ZERO):
 		
 func get_shape():
 	return collisionShapes
+	
+func detectPan():
+	var isCollidingWithWall : bool = false
+	var isPanFound : bool = false
+	var bodies = detectArea.get_overlapping_bodies()
+	for body in bodies:
+		if body == self:
+			continue
+		if(body.is_in_group("Wall")):
+			isCollidingWithWall = true
+		if not (body is DragAndDrop) and not (body is Pan):
+			continue		
+		if(body is DragAndDrop):
+			pan = body.pan
+			isPanFound = true
+		if(body is Pan):
+			pan = pan
+			isPanFound = true
+		if(pan and (body is Pan or body is DragAndDrop )):
+			pan.registerObj(self)
+	
+	if(pan) and (isCollidingWithWall or not isPanFound):
+		pan.unregisterObj(self)
+		pan = null
 
 func _on_body_entered(body):
-#	if not (body is DragAndDrop) and not (body is Pan):
-#		return
-	if(body is DragAndDrop):
-		pan = body.pan
-		
-	if(pan):
-		pan.registerObj(self)
+#	if(body is DragAndDrop):
+#		pan = body.pan
+#	if(body is Pan):
+#		pan = pan
+#
+#	if(pan and (body is Pan or body is DragAndDrop )):
+#		pan.registerObj(self)
+
 	#TODO:
 	#Play hit/smoke/dust effect
-	contactSound.play()
+	if playContactSoundEffect:
+		contactSound.play()
 #	var otherShapes = body.get_shape()
 #	if(body is DragAndDrop):
 #		if((body as RigidBody2D).linear_velocity == Vector2.ZERO):

@@ -32,6 +32,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("Load Next Leve"):
 		startLoadNextLevel()
+	if Input.is_action_pressed("Reload"):
+		ReloadLevel()
 	if not (shouldFade):
 		return
 	if(fadeTimeCounter <= 0 and waitTimeBeforeFadeOutCounter <= 0 and isFadeIn):
@@ -56,6 +58,7 @@ func _process(delta):
 func reset():
 	#TODO
 	#Reset count down
+	SignalManager.emit_signal(SignalManager.releaseObjectSignal)
 	pass
 			
 	
@@ -68,6 +71,13 @@ func startLoadNextLevel():
 	shouldFade = true
 	isFadeIn = true
 
+func ReloadLevel():
+	currentLevelNode.queue_free()
+	currentLevelNode = levels[currentLevelIdx].instantiate()
+	add_child(currentLevelNode)
+	reset()
+
+	
 
 func loadNextLevel():
 	currentLevelNode.queue_free()

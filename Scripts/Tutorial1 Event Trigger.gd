@@ -6,10 +6,6 @@ extends Node2D
 @export var light1 : Node2D
 @export var light2 : Node2D
 @export var light3 : Node2D
-@export var wall : Node2D
-@export var light4 : Node2D
-@export var light5 : Node2D
-@export var light6 : Node2D
 
 
 var nextEventCounter : float = 0
@@ -30,10 +26,6 @@ func process_event():
 			light2.visible = true
 		2: 
 			light3.visible = true
-		3:
-			wall.queue_free()
-		4:
-			light4.visible = true
 	eventCount += 1
 	
 

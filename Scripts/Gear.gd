@@ -16,8 +16,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var diff = abs(global_position.y - pan.global_position.y)
-	print("diff: " + str(diff))
-	print("last diff: " + str(lastDiff))
 	var newRotation = rotation
 #	if(lastDiff < diff):
 #		#Rotate right

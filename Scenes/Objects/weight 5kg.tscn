@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://b45vsckerf7rj"]
+
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_sh8o2"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_smoen"]
+[ext_resource type="Texture2D" uid="uid://r6uhqvqsnbin" path="res://Arts/weight.png" id="3_jbxfm"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_upkd6"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="5_yheo1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
+size = Vector2(64, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_103md"]
+size = Vector2(60, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gawu"]
+size = Vector2(52, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uueu"]
+size = Vector2(44, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ueba"]
+size = Vector2(28, 2)
+
+[node name="Weight 1kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_tb51x")
+gravity_scale = 0.1
+continuous_cd = 2
+max_contacts_reported = 1
+contact_monitor = true
+angular_damp = 30.606
+script = ExtResource("1_sh8o2")
+force = 100.0
+stopDistance = 0.0
+distanceDecayFactor = 2.0
+velocityDecayValue = 1.0
+contactEffect = ExtResource("2_smoen")
+directionAndVelocityIndicator = NodePath("DirectionIndicator")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3lujh")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_103md")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_1gawu")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(9.53674e-07, -29)
+shape = SubResource("RectangleShape2D_0uueu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, -31)
+shape = SubResource("RectangleShape2D_2ueba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_jbxfm")
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_upkd6")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_yheo1")]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,16 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsyhmmvxevwih"]
+[gd_scene load_steps=15 format=3 uid="uid://cjthgb7jnuiwd"]
 
-[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_xvny8"]
-[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_6wi1q"]
-[ext_resource type="Texture2D" uid="uid://r6uhqvqsnbin" path="res://Arts/weight.png" id="3_f1cpk"]
-[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_bc3ff"]
-[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="5_tony6"]
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_4yi0e"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_5p4mg"]
+[ext_resource type="Texture2D" uid="uid://r6uhqvqsnbin" path="res://Arts/weight.png" id="3_cnid5"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="4_ww73v"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="5_bwjuo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lujh"]
 size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m8de"]
+size = Vector2(7.78865, 4.24433)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6whex"]
+size = Vector2(7.6569, 4.244)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmysd"]
+size = Vector2(0.999843, 1.99969)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_103md"]
 size = Vector2(14.925, 0.471937)
@@ -24,7 +33,7 @@ size = Vector2(10.943, 0.385822)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ueba"]
 size = Vector2(6.96107, 0.388688)
 
-[node name="Weight 1kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator", "detectArea") groups=["pickable"]]
+[node name="Weight 1kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
@@ -35,17 +44,31 @@ continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
 angular_damp = 30.606
-script = ExtResource("1_xvny8")
+script = ExtResource("1_4yi0e")
 force = 100.0
 stopDistance = 0.0
 distanceDecayFactor = 2.0
 velocityDecayValue = 1.0
-contactEffect = ExtResource("2_6wi1q")
+contactEffect = ExtResource("2_5p4mg")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
-detectArea = NodePath("Area2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3lujh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-3.7356, 4.87905)
+rotation = 0.244873
+shape = SubResource("RectangleShape2D_1m8de")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(3.78524, 5.05371)
+rotation = -0.245082
+shape = SubResource("RectangleShape2D_6whex")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-8.9407e-08, 7)
+rotation = -0.0177368
+shape = SubResource("RectangleShape2D_xmysd")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 position = Vector2(-0.0673118, -6.21828)
@@ -66,37 +89,17 @@ shape = SubResource("RectangleShape2D_2ueba")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_f1cpk")
+texture = ExtResource("3_cnid5")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_bc3ff")]
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_ww73v")]
 
-[node name="DirectionIndicator" parent="." instance=ExtResource("5_tony6")]
+[node name="DirectionIndicator" parent="." instance=ExtResource("5_bwjuo")]
 visible = false
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_3lujh")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.0673118, -6.21828)
-shape = SubResource("RectangleShape2D_103md")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.00831938, -6.7937)
-shape = SubResource("RectangleShape2D_1gawu")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.0359251, -7.2937)
-shape = SubResource("RectangleShape2D_0uueu")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.0211768, -7.73471)
-shape = SubResource("RectangleShape2D_2ueba")
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

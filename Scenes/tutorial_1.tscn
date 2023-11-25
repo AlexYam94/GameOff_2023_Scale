@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dc8oxg0j4rtfx" path="res://Scenes/light_bulb.tscn" id="3_225g7"]
 [ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="4_6kai7"]
 [ext_resource type="Script" path="res://Scripts/Tutorial1 Event Trigger.gd" id="5_txk5e"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_decbk"]
-size = Vector2(22, 174)
+[ext_resource type="Texture2D" uid="uid://c0ue6iodxyloh" path="res://Arts/Other/left click.png" id="6_u3a7f"]
 
 [sub_resource type="Animation" id="Animation_jnryb"]
 resource_name = "tutorial 1"
@@ -33,39 +31,33 @@ _data = {
 [node name="Tutorial1" type="Node2D"]
 
 [node name="Scale" parent="." instance=ExtResource("1_0ac8q")]
-
-[node name="TileMap" parent="." instance=ExtResource("2_c3iqs")]
-position = Vector2(0, 34)
-layer_0/tile_data = PackedInt32Array(262137, 65536, 0, 262138, 65536, 0, 262139, 65536, 0, 262140, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0, 196611, 65536, 0, 196612, 65536, 0, 196613, 65536, 0, 196614, 65536, 0, 196615, 65536, 0, 196616, 65536, 0, 196617, 196608, 0, 327673, 589824, 0, 327674, 589824, 0, 327675, 589824, 0, 327676, 589824, 0, 327677, 589824, 0, 327678, 589824, 0, 327679, 589824, 0, 262144, 589824, 0, 262145, 589824, 0, 262146, 589824, 0, 262147, 589824, 0, 262148, 589824, 0, 262149, 589824, 0, 262150, 589824, 0, 262151, 589824, 0, 262152, 589824, 0, 262153, 655360, 0, 393209, 786432, 0, 393210, 786432, 0, 393211, 786432, 0, 393212, 786432, 0, 393213, 786432, 0, 393214, 786432, 0, 393215, 786432, 0, 327680, 786432, 0, 327681, 786432, 0, 327682, 786432, 0, 327683, 786432, 0, 327684, 786432, 0, 327685, 786432, 0, 327686, 786432, 0, 327687, 786432, 0, 327688, 786432, 0, 327689, 851968, 0, 393224, 983040, 0, 393223, 983040, 0, 393222, 983040, 0, 393221, 983040, 0, 393220, 983040, 0, 393219, 983040, 0, 393218, 983040, 0, 393217, 983040, 0, 393216, 983040, 0, 458751, 983040, 0, 458750, 983040, 0, 458749, 983040, 0, 458748, 983040, 0, 458747, 983040, 0, 458746, 983040, 0, 458745, 983040, 0, 393225, 983040, 0, 262134, 131072, 0, 327670, 524288, 0, 393206, 720896, 0, 458742, 917504, 0, 262136, 65536, 0, 327672, 589824, 0, 393208, 786432, 0, 458744, 983040, 0, 262135, 65536, 0, 327671, 589824, 0, 393207, 786432, 0, 458743, 983040, 0, -458743, 393216, 0, -393207, 458752, 0, -327671, 393216, 0, -262135, 458752, 0, -196599, 393216, 0, -131063, 458752, 0, -65527, 393216, 0, 9, 458752, 0, 65545, 393216, 0, 131081, 458752, 0, -458744, 458752, 0, -393208, 393216, 0, -327672, 458752, 0, -262136, 393216, 0, -196600, 458752, 0, -131064, 393216, 0, -65528, 458752, 0, 8, 393216, 0, 65544, 458752, 0, 131080, 393216, 0, -393226, 327680, 0, -327690, 262144, 0, -262154, 327680, 0, -196618, 262144, 0, -131082, 327680, 0, -65546, 262144, 0, -10, 327680, 0, 65526, 262144, 0, 131062, 327680, 0, 196598, 262144, 0, -393225, 262144, 0, -327689, 327680, 0, -262153, 262144, 0, -196617, 327680, 0, -131081, 262144, 0, -65545, 327680, 0, -9, 262144, 0, 65527, 327680, 0, 131063, 262144, 0, 196599, 327680, 0, -524298, 458752, 0, -524297, 458752, 0, -524296, 458752, 0, -524295, 458752, 0, -524294, 458752, 0, -524293, 458752, 0, -524292, 458752, 0, -524291, 458752, 0, -524290, 458752, 0, -524289, 458752, 0, -589824, 458752, 0, -589823, 458752, 0, -589822, 458752, 0, -589821, 458752, 0, -589820, 458752, 0, -589819, 458752, 0, -589818, 458752, 0, -589817, 458752, 0, -589816, 458752, 0, -589815, 458752, 0, -524279, 458752, 0, -458762, 458752, 0, -458761, 458752, 0, -524280, 458752, 0, -589834, 458752, 0, -589833, 458752, 0, -589832, 458752, 0, -589831, 458752, 0, -589830, 458752, 0, -589829, 458752, 0, -589828, 458752, 0, -589827, 458752, 0, -589826, 458752, 0, -589825, 458752, 0, -655360, 458752, 0, -655359, 458752, 0, -655358, 458752, 0, -655357, 458752, 0, -655356, 458752, 0, -655355, 458752, 0, -655354, 458752, 0, -655353, 458752, 0, -655352, 458752, 0, -655351, 458752, 0)
+position = Vector2(20, 15.977)
 
 [node name="light bulb" parent="." instance=ExtResource("3_225g7")]
 visible = false
-position = Vector2(-113, 44)
+z_index = -10
+position = Vector2(-145, 32)
 
 [node name="light bulb2" parent="." instance=ExtResource("3_225g7")]
 visible = false
-position = Vector2(-50, 10)
+z_index = -10
+position = Vector2(-80, 28)
 
 [node name="light bulb3" parent="." instance=ExtResource("3_225g7")]
-position = Vector2(-46, 61)
-
-[node name="wall" type="StaticBody2D" parent="."]
-collision_layer = 6
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
-position = Vector2(10, -6)
-shape = SubResource("RectangleShape2D_decbk")
+visible = false
+z_index = -10
+position = Vector2(-29, 2)
 
 [node name="light bulb4" parent="." instance=ExtResource("3_225g7")]
 visible = false
 position = Vector2(50, 10)
 
 [node name="Weight 1kg" parent="." instance=ExtResource("4_6kai7")]
-position = Vector2(-90, 67)
+position = Vector2(-142, 66)
 
 [node name="Weight 1kg2" parent="." instance=ExtResource("4_6kai7")]
-position = Vector2(90, 67)
+position = Vector2(71, -73)
+playContactSoundEffect = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "tutorial 1"
@@ -73,13 +65,21 @@ libraries = {
 "": SubResource("AnimationLibrary_ocf0p")
 }
 
-[node name="Tutorial1 Event Trigger" type="Node2D" parent="." node_paths=PackedStringArray("light1", "light2", "light3", "wall")]
+[node name="Tutorial1 Event Trigger" type="Node2D" parent="." node_paths=PackedStringArray("light1", "light2", "light3")]
 script = ExtResource("5_txk5e")
 nextEventInterval = 1.0
 totalEvent = 2
 light1 = NodePath("../light bulb")
 light2 = NodePath("../light bulb2")
 light3 = NodePath("../light bulb3")
-wall = NodePath("../wall")
+
+[node name="TileMap" parent="." instance=ExtResource("2_c3iqs")]
+position = Vector2(0, 34)
+layer_0/tile_data = PackedInt32Array(-589824, 458752, 0, -589823, 458752, 0, -589822, 458752, 0, -655360, 458752, 0, -655359, 458752, 0, -655358, 458752, 0, -524288, 393216, 0, -458752, 393216, 0, -393216, 393216, 0, -327680, 393216, 0, -262144, 393216, 0, -196608, 393216, 0, -131072, 393216, 0, -65536, 393216, 0, 0, 393216, 0, 65536, 393216, 0, 131072, 393216, 0, -524287, 393216, 0, -458751, 393216, 0, -393215, 393216, 0, -327679, 393216, 0, -262143, 393216, 0, -196607, 393216, 0, -131071, 393216, 0, -65535, 393216, 0, 1, 393216, 0, 65537, 393216, 0, 131073, 393216, 0, -524286, 393216, 0, -458750, 393216, 0, -393214, 393216, 0, -327678, 393216, 0, -262142, 393216, 0, -196606, 393216, 0, -131070, 393216, 0, -65534, 393216, 0, 2, 393216, 0, 65538, 393216, 0, 131074, 393216, 0)
+
+[node name="LeftClick" type="Sprite2D" parent="."]
+position = Vector2(-129, 43)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_u3a7f")
 
 [connection signal="clicked" from="Weight 1kg" to="Tutorial1 Event Trigger" method="_on_weight_1_kg_clicked"]
