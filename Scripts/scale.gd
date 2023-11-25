@@ -10,15 +10,26 @@ extends Node2D
 @export var countDownText : Label
 @export var countDownTime : float
 @export var pickableObjGroup : String
+@export var diffText : Label
+@export var diffTextChangeInterval : float = .01
 
 var allPickables = []
 var countDownTimer : float
 var startLoadNextLevel : bool = false
 
+var targetDiff : int
+var currentDiff : int = 0
+var diffTextChangeCounter : float
+var shouldChangeDiffText : bool
+var leftWeightSnapshot : float
+var rightWeightSnapshot : float
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if allPickables.size() > 0:
+		allPickables.clear()
+	find_nodes_in_group(get_parent())
 	countDownTimer = countDownTime
-	find_nodes_in_group(get_tree().root)
 		
 
 
@@ -37,6 +48,8 @@ func _process(delta):
 		SignalManager.emit_signal(SignalManager.countDownSignalName, ceil(countDownTimer))
 	else:
 		countDownTimer = countDownTime
+	
+	cal_weight_difference(delta)
 		
 	if (countDownTimer <= 0 and !startLoadNextLevel):
 		#print("load next level")
@@ -46,6 +59,45 @@ func _process(delta):
 		startLoadNextLevel = true
 		SignalManager.emit_signal(SignalManager.loadNextLevelSignalName)
 		pass
+
+func cal_weight_difference(delta):
+	var leftWeight : float = leftPan.totalWeight
+	var rightWeight : float = rightPan.totalWeight
+	
+	if (leftWeight != leftWeightSnapshot or rightWeight != rightWeightSnapshot):
+		if(leftWeight == rightWeight and not (leftWeight == 0 or rightWeight == 0)):
+			targetDiff = 0
+			shouldChangeDiffText = true
+			diffTextChangeCounter = diffTextChangeInterval
+			currentDiff = 0
+		elif (leftWeight != 0 and rightWeight != 0):
+			var diff : float = abs(leftWeight - rightWeight)
+			var avg : float = (leftWeight + rightWeight) / 2
+			targetDiff = roundi(diff/avg * 100)
+			shouldChangeDiffText = true
+			diffTextChangeCounter = diffTextChangeInterval
+			currentDiff = 0
+		else:
+			diffText.text = "∞"
+			
+	leftWeightSnapshot = leftWeight
+	rightWeightSnapshot = rightWeight
+		
+	if(not shouldChangeDiffText):
+		return 
+	if(diffTextChangeCounter > 0):
+		diffTextChangeCounter = max(diffTextChangeCounter - delta, 0)
+	else:
+		if(currentDiff >= targetDiff):
+			diffText.text = str(currentDiff) + "%"
+			shouldChangeDiffText = false
+			currentDiff = 0
+			return
+		diffTextChangeCounter = diffTextChangeInterval
+		currentDiff += 1
+		diffText.text = str(currentDiff) + "%"
+		
+	
 
 func find_nodes_in_group(node):
 	for n in node.get_children():
