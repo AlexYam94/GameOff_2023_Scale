@@ -32,6 +32,7 @@ var originScale : Vector2
 var pickupDir : Vector2
 var contactSound : AudioStreamPlayer2D
 
+
 func _ready():
 	directionAndVelocityIndicator.visible = false
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -89,30 +90,72 @@ func drop(impulse=Vector2.ZERO):
 		
 func get_shape():
 	return collisionShapes
-	
+
 func detectPan():
-	var isCollidingWithWall : bool = false
-	var isPanFound : bool = false
 	var bodies = detectArea.get_overlapping_bodies()
+	var isPanFound : bool = false
 	for body in bodies:
 		if body == self:
 			continue
-		if(body.is_in_group("Wall")):
-			isCollidingWithWall = true
 		if not (body is DragAndDrop) and not (body is Pan):
-			continue		
+			continue
 		if(body is DragAndDrop):
-			pan = body.pan
+			var asked : Dictionary = {self: false}
+			if (body as DragAndDrop).isConnectedToPan(asked):
+				pan = (body as DragAndDrop).pan
+				isPanFound = true
+		elif(body is Pan):
 			isPanFound = true
-		if(body is Pan):
-			pan = pan
-			isPanFound = true
-		if(pan and (body is Pan or body is DragAndDrop )):
+			pan = body
+			break;
+		
+	if(pan):	
+		if not isPanFound:
+			pan.unregisterObj(self)
+			pan = null
+		else:
 			pan.registerObj(self)
+			
+func isConnectedToPan(asked : Dictionary):
+	var bodies = detectArea.get_overlapping_bodies()
+	var isConnectToPan : bool = false
+	for body in bodies:
+		if asked.has(body) or body == self:
+			continue
+		if body is Pan:
+			return true
+		if body is DragAndDrop:
+			asked[self] = false
+			isConnectToPan = (body as DragAndDrop).isConnectedToPan(asked)
 	
-	if(pan) and (isCollidingWithWall or not isPanFound):
-		pan.unregisterObj(self)
-		pan = null
+	return isConnectToPan
+	
+#func detectPan():
+#	var isCollidingWithWall : bool = false
+#	var isPanFound : bool = false
+#	var bodies = detectArea.get_overlapping_bodies()
+#	isConnectToPan = false
+#	for body in bodies:
+#		if body == self:
+#			continue
+#		if(body.is_in_group("Wall")):
+#			isCollidingWithWall = true
+#		if not (body is DragAndDrop) and not (body is Pan):
+#			continue		
+#		if(body is DragAndDrop):
+#			if (body as DragAndDrop).isConnectToPan:
+#				pan = body.pan
+#				isPanFound = true
+#		elif(body is Pan):
+#			isConnectToPan = true
+#			pan = pan
+#			isPanFound = true
+#		if(pan and (body is Pan or body is DragAndDrop )):
+#			pan.registerObj(self)
+	
+#	if(pan) and not isConnectToPan and (isCollidingWithWall or not isPanFound):
+#		pan.unregisterObj(self)
+#		pan = null
 
 func _on_body_entered(body):
 #	if(body is DragAndDrop):
