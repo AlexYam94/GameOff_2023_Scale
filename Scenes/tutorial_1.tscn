@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4rep2wvxvbro"]
+[gd_scene load_steps=10 format=3 uid="uid://b4rep2wvxvbro"]
 
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_0ac8q"]
 [ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="2_c3iqs"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="4_6kai7"]
 [ext_resource type="Script" path="res://Scripts/Tutorial1 Event Trigger.gd" id="5_txk5e"]
 [ext_resource type="Texture2D" uid="uid://c0ue6iodxyloh" path="res://Arts/Other/left click.png" id="6_u3a7f"]
+[ext_resource type="Texture2D" uid="uid://nummug6d5rgl" path="res://Arts/Other/Direction Indicator arrow.png" id="7_fhxgv"]
 
 [sub_resource type="Animation" id="Animation_jnryb"]
 resource_name = "tutorial 1"
@@ -81,5 +82,17 @@ layer_0/tile_data = PackedInt32Array(-589824, 458752, 0, -589823, 458752, 0, -58
 position = Vector2(-129, 43)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_u3a7f")
+
+[node name="DirectionIndicatorArrow" type="Sprite2D" parent="."]
+position = Vector2(-105, 25)
+rotation = 1.23946
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_fhxgv")
+
+[node name="DirectionIndicatorArrow2" type="Sprite2D" parent="."]
+position = Vector2(-42, 2.14577e-06)
+rotation = 2.74598
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_fhxgv")
 
 [connection signal="clicked" from="Weight 1kg" to="Tutorial1 Event Trigger" method="_on_weight_1_kg_clicked"]

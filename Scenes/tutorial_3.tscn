@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://eki41cpd8j8j"]
+
+[ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_gql1g"]
+[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="3_85dwa"]
+[ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_6a1cl"]
+
+[node name="Tutorial1" type="Node2D"]
+
+[node name="Scale" parent="." instance=ExtResource("1_gql1g")]
+position = Vector2(0, -13)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 0)
+color = Color(0.980392, 0.972549, 0.890196, 1)
+shadow_color = Color(0, 0, 0, 0.0117647)
+texture = ExtResource("6_6a1cl")
+texture_scale = 2.0
+
+[node name="Weight 1kg" parent="." instance=ExtResource("3_85dwa")]
+position = Vector2(-25, 73)
+
+[node name="Weight 1kg2" parent="." instance=ExtResource("3_85dwa")]
+position = Vector2(-8, 73)
+
+[node name="Weight 1kg3" parent="." instance=ExtResource("3_85dwa")]
+position = Vector2(26, 73)
+
+[node name="Weight 1kg4" parent="." instance=ExtResource("3_85dwa")]
+position = Vector2(9, 73)

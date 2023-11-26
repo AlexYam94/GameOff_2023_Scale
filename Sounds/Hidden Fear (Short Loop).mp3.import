@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cegjlq4xlmm1q"
+path="res://.godot/imported/Hidden Fear (Short Loop).mp3-06aa6538e85d6e4ab52c4f2a8758d10c.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Hidden Fear (Short Loop).mp3"
+dest_files=["res://.godot/imported/Hidden Fear (Short Loop).mp3-06aa6538e85d6e4ab52c4f2a8758d10c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

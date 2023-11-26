@@ -6,7 +6,8 @@
 [node name="light bulb" type="Node2D"]
 
 [node name="LightBulb" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.7)
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.21875, 0.56875)
 texture = ExtResource("1_qaesr")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

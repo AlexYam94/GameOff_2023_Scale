@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd4b24t3l1fx"]
+[gd_scene load_steps=9 format=3 uid="uid://bd4b24t3l1fx"]
 
 [ext_resource type="Texture2D" uid="uid://kae4mo23htb4" path="res://Arts/Background/Background Color.png" id="1_yr4xg"]
 [ext_resource type="Texture2D" uid="uid://tnk6dadnd7ll" path="res://Arts/Background/Gear1.png" id="2_p73ft"]
 [ext_resource type="Texture2D" uid="uid://dsudnii8wu6g6" path="res://Arts/Background/Gear2.png" id="3_2088n"]
 [ext_resource type="Texture2D" uid="uid://2te27hisiswo" path="res://Arts/Background/Gear3.png" id="4_eyj6u"]
 [ext_resource type="Texture2D" uid="uid://dlxqr0mn6pr4l" path="res://Arts/Background/Gear4.png" id="5_b5qjt"]
+[ext_resource type="AudioStream" uid="uid://j51ekk4qr2f1" path="res://Sounds/gear.mp3" id="6_dsbpw"]
 
 [sub_resource type="Animation" id="Animation_lbyh7"]
 resource_name = "background"
@@ -188,3 +189,9 @@ position = Vector2(731, 428)
 rotation = 0.0792086
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_b5qjt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_dsbpw")
+volume_db = -10.0
+pitch_scale = 0.9
+autoplay = true

@@ -24,7 +24,7 @@ size = Vector2(44, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ueba"]
 size = Vector2(28, 2)
 
-[node name="Weight 1kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+[node name="Weight 5kg" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator", "detectArea") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
@@ -43,6 +43,7 @@ distanceDecayFactor = 2.0
 velocityDecayValue = 1.0
 contactEffect = ExtResource("2_smoen")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
+detectArea = NodePath("Area2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3lujh")
@@ -74,6 +75,29 @@ texture = ExtResource("3_jbxfm")
 visible = false
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3lujh")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_103md")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_1gawu")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9.53674e-07, -29)
+shape = SubResource("RectangleShape2D_0uueu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.76837e-07, -31)
+shape = SubResource("RectangleShape2D_2ueba")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

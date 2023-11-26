@@ -68,7 +68,7 @@ position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_f1cpk")
 
-[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("4_bc3ff")]
+[node name="CollideSound" parent="." instance=ExtResource("4_bc3ff")]
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("5_tony6")]
 visible = false
