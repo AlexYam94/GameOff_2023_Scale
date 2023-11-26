@@ -15,6 +15,7 @@ extends Node2D
 
 var allPickables = []
 var countDownTimer : float
+var lastCountDownDigit : int = 0
 var startLoadNextLevel : bool = false
 
 var targetDiff : int
@@ -23,6 +24,7 @@ var diffTextChangeCounter : float
 var shouldChangeDiffText : bool
 var leftWeightSnapshot : float
 var rightWeightSnapshot : float
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,7 +47,10 @@ func _process(delta):
 		countDownTimer = max(countDownTimer-delta, 0)
 		#countDown Animation
 		#print("count down: " + str(ceil(countDownTimer)))
-		SignalManager.emit_signal(SignalManager.countDownSignalName, ceil(countDownTimer))
+		if(countDownTimer > 0):
+			if not (lastCountDownDigit == ceili(countDownTimer)):
+				lastCountDownDigit = ceili(countDownTimer)
+				SignalManager.emit_signal(SignalManager.countDownSignalName, lastCountDownDigit)
 	else:
 		countDownTimer = countDownTime
 	
