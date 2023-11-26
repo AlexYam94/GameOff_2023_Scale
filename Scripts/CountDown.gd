@@ -2,6 +2,7 @@ class_name CountDown
 extends Node2D
 
 @export var animPlayer : AnimationPlayer
+@export var label : Label
 
 func _ready():
 	SignalManager.connect(SignalManager.countDownSignalName, countDown)
@@ -11,4 +12,5 @@ func _process(delta):
 	pass
 
 func countDown(digit):
-	animPlayer.play(str(digit))
+	label.text = str(digit)
+	animPlayer.play("5")
