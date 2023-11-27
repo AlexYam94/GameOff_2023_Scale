@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkid8j3n20h3e"]
+[gd_scene load_steps=16 format=3 uid="uid://bkid8j3n20h3e"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_uhxc1"]
 [ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_jgklk"]
@@ -11,56 +11,82 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
 rough = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_26xdl"]
-size = Vector2(14, 3.00154)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avkxk"]
+size = Vector2(22.9892, 5.98145)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkmt5"]
-size = Vector2(13.8115, 2.8699)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcuwk"]
+size = Vector2(9.00463, 6.98453)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mn0p"]
-size = Vector2(4.43211, 7.12839)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sb3m"]
+size = Vector2(3.50884, 7.07087)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_07klv"]
-size = Vector2(2.84009, 9.20972)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_soapx"]
+size = Vector2(9.89921, 4.9762)
 
-[node name="BusterSword" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33hxu"]
+size = Vector2(10.0046, 2.00773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1njcx"]
+size = Vector2(14, 0.999998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytdos"]
+size = Vector2(11.0185, 12)
+
+[node name="Toilet" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator", "detectArea") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
-mass = 20.0
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.1
 continuous_cd = 1
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_uhxc1")
-stopDistance = 1.0
+force = 1000.0
+stopDistance = 0.0
 distanceDecayFactor = 40.0
 velocityDecayValue = 1.0
 nonFacingCursorFactor = 2.0
 contactEffect = ExtResource("2_jgklk")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
+detectArea = NodePath("Area2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.00077, 15.4992)
+position = Vector2(-1.49458, 2.99304)
 rotation = 0.00154659
-shape = SubResource("RectangleShape2D_26xdl")
+shape = SubResource("RectangleShape2D_avkxk")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-9.8108, -8.9523)
-rotation = -1.59
-shape = SubResource("RectangleShape2D_pkmt5")
+position = Vector2(-2.50309, 9.49922)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_mcuwk")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(-8.23119, 7.25014)
+rotation = -0.777875
+shape = SubResource("RectangleShape2D_3sb3m")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(3.78006, 7.75399)
+rotation = -0.777875
+shape = SubResource("RectangleShape2D_soapx")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-6.93735, -10.9468)
-rotation = -0.760875
-shape = SubResource("RectangleShape2D_5mn0p")
+position = Vector2(-0.99922, 13.9961)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_33hxu")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(12.54, 12.75)
-rotation = -0.793716
-shape = SubResource("RectangleShape2D_07klv")
+position = Vector2(-0.999244, 15.5108)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_1njcx")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-8.49999, -6.00851)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_ytdos")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("3_642mr")
@@ -77,6 +103,44 @@ offset = Vector2(50, 0)
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_4fdr3")]
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("7_7rolu")]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.49458, 2.99304)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_avkxk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2.50309, 9.49922)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_mcuwk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.99922, 13.9961)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_33hxu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.999244, 15.5108)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_1njcx")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.49999, -6.00851)
+rotation = 0.00154659
+shape = SubResource("RectangleShape2D_ytdos")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.23119, 7.25014)
+rotation = -0.777875
+shape = SubResource("RectangleShape2D_3sb3m")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.78006, 7.75399)
+rotation = -0.777875
+shape = SubResource("RectangleShape2D_soapx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

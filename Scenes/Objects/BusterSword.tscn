@@ -26,12 +26,12 @@ size = Vector2(3.44778, 2.86225)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07klv"]
 size = Vector2(2.84009, 9.20972)
 
-[node name="BusterSword" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator") groups=["pickable"]]
+[node name="BusterSword" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator", "detectArea") groups=["pickable"]]
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
-mass = 20.0
+mass = 15.0
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.1
 continuous_cd = 1
@@ -44,6 +44,7 @@ velocityDecayValue = 1.0
 nonFacingCursorFactor = 2.0
 contactEffect = ExtResource("2_c54v3")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
+detectArea = NodePath("Area2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.896808, 1.97085)
@@ -85,6 +86,33 @@ offset = Vector2(50, 0)
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_ojelt")]
 
 [node name="DirectionIndicator" parent="." instance=ExtResource("7_3gn2x")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.896808, 1.97085)
+rotation = -0.793716
+shape = SubResource("RectangleShape2D_26xdl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9.80663, -7.98451)
+rotation = -1.59
+shape = SubResource("RectangleShape2D_pkmt5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.93735, -10.9468)
+rotation = -0.760875
+shape = SubResource("RectangleShape2D_5mn0p")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.73834, -7.22519)
+rotation = -0.760875
+shape = SubResource("RectangleShape2D_w21vy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12.54, 12.75)
+rotation = -0.793716
+shape = SubResource("RectangleShape2D_07klv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
