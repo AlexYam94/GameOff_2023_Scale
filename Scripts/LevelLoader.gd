@@ -88,3 +88,7 @@ func loadNextLevel():
 
 func pickFadeMaterial():
 	return fadeMat[rng.randi_range(0, fadeMat.size()-1)]
+
+
+func _on_button_pressed():
+	ReloadLevel()
