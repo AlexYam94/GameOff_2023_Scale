@@ -32,8 +32,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("Load Next Leve"):
 		startLoadNextLevel()
-	if Input.is_action_pressed("Reload"):
-		ReloadLevel()
+#	if Input.is_action_pressed("Reload"):
+#		ReloadLevel()
 	if not (shouldFade):
 		return
 	if(fadeTimeCounter <= 0 and waitTimeBeforeFadeOutCounter <= 0 and isFadeIn):
