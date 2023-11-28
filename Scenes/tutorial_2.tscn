@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="5_efdbl"]
 [ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_6a1cl"]
 
-[node name="Tutorial1" type="Node2D"]
+[node name="Tutorial2" type="Node2D"]
 
 [node name="Scale" parent="." instance=ExtResource("1_gql1g")]
 position = Vector2(0, -13)
@@ -13,6 +13,7 @@ position = Vector2(0, -13)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
 color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 1.5
 shadow_color = Color(0, 0, 0, 0.0117647)
 texture = ExtResource("6_6a1cl")
 texture_scale = 2.0

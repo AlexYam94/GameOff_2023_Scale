@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch3m2mmcgasgn"]
+[gd_scene load_steps=6 format=3 uid="uid://ch3m2mmcgasgn"]
 
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_dc0qs"]
 [ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="2_pvgdk"]
+[ext_resource type="PackedScene" uid="uid://cduo2ht5jqx0o" path="res://Scenes/Objects/Master Sword.tscn" id="4_4ijtp"]
 [ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="4_b13mu"]
-[ext_resource type="PackedScene" uid="uid://cjthgb7jnuiwd" path="res://Scenes/Objects/weight 2kg.tscn" id="4_ccvnp"]
+[ext_resource type="PackedScene" uid="uid://ca1jqd5fl1x72" path="res://Scenes/Objects/Assualt Rifle.tscn" id="5_0npl7"]
 
 [node name="Tutorial1" type="Node2D"]
 
@@ -13,6 +14,7 @@ position = Vector2(0, -13)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
 color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 1.5
 shadow_color = Color(0, 0, 0, 0.0117647)
 texture = ExtResource("2_pvgdk")
 texture_scale = 2.0
@@ -21,9 +23,9 @@ texture_scale = 2.0
 position = Vector2(-1, 33)
 layer_0/tile_data = PackedInt32Array(-327688, 327680, 0, -196613, 327680, 0, -262149, 327680, 0, -327685, 327680, 0, -393221, 327680, 0, -458757, 327680, 0, -196618, 327680, 0, -196617, 327680, 0, -196616, 327680, 0, -196615, 327680, 0, 131076, 458752, 0, 65540, 458752, 0, 4, 458752, 0, -131067, 458752, 0, -131066, 458752, 0, -131065, 458752, 0, -131064, 458752, 0, -131063, 458752, 0, 65543, 327680, 0)
 
-[node name="Weight 2kg" parent="." instance=ExtResource("4_ccvnp")]
-position = Vector2(-143.23, -36.0796)
-rotation = 1.58236
+[node name="Master Sword" parent="." instance=ExtResource("4_4ijtp")]
+position = Vector2(-142.024, -48.7359)
 
-[node name="Weight 2kg2" parent="." instance=ExtResource("4_ccvnp")]
-position = Vector2(153.5, 64.5)
+[node name="Assualt Rifle" parent="." instance=ExtResource("5_0npl7")]
+position = Vector2(150.266, 67.2005)
+rotation = 1.55174

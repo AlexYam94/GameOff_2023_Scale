@@ -24,10 +24,10 @@ size = Vector2(5.26154, 5.12124)
 size = Vector2(6.31385, 6.31385)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fr4y7"]
-size = Vector2(2.03446, 5.05108)
+size = Vector2(2.57521, 2.5599)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpsl7"]
-size = Vector2(4.84062, 2.38524)
+size = Vector2(3.03455, 2.64511)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fckuj"]
 size = Vector2(4.16693, 10.8142)
@@ -37,7 +37,7 @@ disable_mode = 2
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
-mass = 4.0
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_tb51x")
 gravity_scale = 0.1
 continuous_cd = 1
@@ -56,38 +56,31 @@ detectArea = NodePath("Area2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.146834, -0.0377431)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5p6k0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-14.625, -14.7264)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_aah56")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(13.3664, 13.5807)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfgq1")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(2.94857, 3.02258)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ox6gc")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
-position = Vector2(12.1037, 3.4435)
-scale = Vector2(1, 1)
+position = Vector2(11.6631, 4.68909)
 shape = SubResource("RectangleShape2D_fr4y7")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
-position = Vector2(3.40457, 12.2127)
-scale = Vector2(1, 1)
+position = Vector2(4.3076, 12.0828)
 shape = SubResource("RectangleShape2D_jpsl7")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
 position = Vector2(7.96457, 8.31919)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fckuj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -108,43 +101,38 @@ offset = Vector2(50, 0)
 visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.146834, -0.0377431)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5p6k0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-14.625, -14.7264)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_aah56")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(13.3664, 13.5807)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nfgq1")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2.94857, 3.02258)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ox6gc")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(12.1037, 3.4435)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_fr4y7")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3.40457, 12.2127)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_jpsl7")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(7.96457, 8.31919)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fckuj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11.6631, 4.68909)
+shape = SubResource("RectangleShape2D_fr4y7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.3076, 12.0828)
+shape = SubResource("RectangleShape2D_jpsl7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

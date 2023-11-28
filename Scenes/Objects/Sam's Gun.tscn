@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://bufnpl1nhu7oy"]
+
+[ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_c4bga"]
+[ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_oyt6f"]
+[ext_resource type="Material" uid="uid://x834ubcrmjgq" path="res://Materials/BlackOutlineMaterial.tres" id="3_mtsro"]
+[ext_resource type="Texture2D" uid="uid://djuf8c0rladn3" path="res://Arts/metroid samus gun.png" id="4_1a4xe"]
+[ext_resource type="Texture2D" uid="uid://drfviugoc8ggs" path="res://icon.svg" id="5_p7tqg"]
+[ext_resource type="PackedScene" uid="uid://dmvuuffr6t800" path="res://Scenes/Objects/collideSound.tscn" id="6_toto8"]
+[ext_resource type="PackedScene" uid="uid://hop6tbteh5gy" path="res://Scenes/Objects/direction_indicator.tscn" id="7_3qkbl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tb51x"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v65l0"]
+size = Vector2(12, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jy0py"]
+size = Vector2(1, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v2b5"]
+size = Vector2(1, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0bqx"]
+size = Vector2(1, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec5js"]
+size = Vector2(1, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pkdc"]
+size = Vector2(8, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2idj"]
+size = Vector2(6, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv5rh"]
+size = Vector2(4, 1)
+
+[node name="Sam\'s Gun" type="RigidBody2D" node_paths=PackedStringArray("directionAndVelocityIndicator", "detectArea") groups=["pickable"]]
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_tb51x")
+gravity_scale = 0.1
+continuous_cd = 1
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_c4bga")
+force = 600.0
+stopDistance = 0.0
+distanceDecayFactor = 40.0
+velocityDecayValue = 1.0
+nonFacingCursorFactor = 2.0
+contactEffect = ExtResource("2_oyt6f")
+directionAndVelocityIndicator = NodePath("DirectionIndicator")
+detectArea = NodePath("Area2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_v65l0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, 3)
+shape = SubResource("RectangleShape2D_jy0py")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 4.5)
+shape = SubResource("RectangleShape2D_1v2b5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5, 3.5)
+shape = SubResource("RectangleShape2D_d0bqx")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 4.5)
+shape = SubResource("RectangleShape2D_ec5js")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_7pkdc")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_k2idj")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_lv5rh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = ExtResource("3_mtsro")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_1a4xe")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, -1)
+scale = Vector2(0.1, 0.01)
+texture = ExtResource("5_p7tqg")
+offset = Vector2(50, 0)
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_toto8")]
+
+[node name="DirectionIndicator" parent="." instance=ExtResource("7_3qkbl")]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_v65l0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6.5, 3)
+shape = SubResource("RectangleShape2D_jy0py")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.5, 4.5)
+shape = SubResource("RectangleShape2D_1v2b5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.5, 3.5)
+shape = SubResource("RectangleShape2D_d0bqx")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.5, 4.5)
+shape = SubResource("RectangleShape2D_ec5js")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_7pkdc")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_k2idj")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_lv5rh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="3_85dwa"]
 [ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_6a1cl"]
 
-[node name="Tutorial1" type="Node2D"]
+[node name="Tutorial3" type="Node2D"]
 
 [node name="Scale" parent="." instance=ExtResource("1_gql1g")]
 position = Vector2(0, -13)

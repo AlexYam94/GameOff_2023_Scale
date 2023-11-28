@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bpk0yg333pbt7"]
+
+[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="1_3a3o7"]
+
+[resource]
+shader = ExtResource("1_3a3o7")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 2.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
