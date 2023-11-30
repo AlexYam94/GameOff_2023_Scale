@@ -26,8 +26,8 @@ func _process(delta):
 	if(frameCounter <= 0):
 		frameCounter = frameDuration
 		currentFrameIdx = (currentFrameIdx + 1) % grapFrames.size()
+		Input.set_custom_mouse_cursor(grapFrames[currentFrameIdx])
 		
-	Input.set_custom_mouse_cursor(grapFrames[currentFrameIdx])
 	
 func hoverOverObject():
 	Input.set_custom_mouse_cursor(hoverSprite)

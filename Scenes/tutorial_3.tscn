@@ -12,6 +12,7 @@ position = Vector2(0, -13)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 0)
 color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 1.3
 shadow_color = Color(0, 0, 0, 0.0117647)
 texture = ExtResource("6_6a1cl")
 texture_scale = 2.0
@@ -20,10 +21,10 @@ texture_scale = 2.0
 position = Vector2(-25, 73)
 
 [node name="Weight 1kg2" parent="." instance=ExtResource("3_85dwa")]
-position = Vector2(-8, 73)
+position = Vector2(-8, 71)
 
 [node name="Weight 1kg3" parent="." instance=ExtResource("3_85dwa")]
-position = Vector2(26, 73)
+position = Vector2(26, 65)
 
 [node name="Weight 1kg4" parent="." instance=ExtResource("3_85dwa")]
-position = Vector2(9, 73)
+position = Vector2(9, 67)

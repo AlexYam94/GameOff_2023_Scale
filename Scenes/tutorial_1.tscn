@@ -90,8 +90,8 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_fhxgv")
 
 [node name="DirectionIndicatorArrow2" type="Sprite2D" parent="."]
-position = Vector2(-42, 2.14577e-06)
-rotation = 2.74598
+position = Vector2(-38, -5)
+rotation = 3.13703
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("7_fhxgv")
 

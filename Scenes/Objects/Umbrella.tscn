@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdu26e0rmbtni"]
+[gd_scene load_steps=19 format=3 uid="uid://cdu26e0rmbtni"]
 
 [ext_resource type="Script" path="res://Scripts/DragAndDrop.gd" id="1_yegfp"]
 [ext_resource type="PackedScene" uid="uid://deid5dwnia2h5" path="res://Scenes/hitEffect.tscn" id="2_gjpmw"]
@@ -22,6 +22,9 @@ size = Vector2(18.5577, 3.09274)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5yb8v"]
 size = Vector2(20, 4.38256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aunu"]
+size = Vector2(12.2981, 2.89058)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqwi8"]
 size = Vector2(2.45274, 16.3516)
@@ -49,11 +52,10 @@ continuous_cd = 1
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_yegfp")
-force = 300.0
+force = 100.0
 stopDistance = 0.0
-distanceDecayFactor = 40.0
+distanceDecayFactor = 2.0
 velocityDecayValue = 1.0
-nonFacingCursorFactor = 2.0
 contactEffect = ExtResource("2_gjpmw")
 directionAndVelocityIndicator = NodePath("DirectionIndicator")
 detectArea = NodePath("Area2D")
@@ -75,6 +77,10 @@ shape = SubResource("RectangleShape2D_5in8d")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(-0.236504, -6.98296)
 shape = SubResource("RectangleShape2D_5yb8v")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="."]
+position = Vector2(-0.301542, -10.6162)
+shape = SubResource("RectangleShape2D_6aunu")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 position = Vector2(-0.130491, 4.41159)
@@ -170,6 +176,10 @@ shape = SubResource("RectangleShape2D_61dnf")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.236504, -6.98296)
 shape = SubResource("RectangleShape2D_5yb8v")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.301542, -10.6162)
+shape = SubResource("RectangleShape2D_6aunu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

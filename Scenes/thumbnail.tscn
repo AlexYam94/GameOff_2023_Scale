@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://da04p263u1pu6"]
+
+[ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_gdier"]
+[ext_resource type="FontFile" uid="uid://bl4y2v414l3gq" path="res://Resource/HerrfochTrash-nXMV.ttf" id="3_8je2f"]
+[ext_resource type="PackedScene" uid="uid://bd4b24t3l1fx" path="res://Scenes/back_ground.tscn" id="4_d5reb"]
+[ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="4_h1dcu"]
+[ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="5_ciaid"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gpnf"]
+font = ExtResource("3_8je2f")
+font_size = 25
+font_color = Color(1, 1, 0.827451, 1)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Scale" parent="." instance=ExtResource("1_gdier")]
+position = Vector2(0, 43)
+
+[node name="ScaleStick" parent="Scale" index="0"]
+position = Vector2(0, 51.3329)
+scale = Vector2(0.05, 0.23646)
+
+[node name="ScaleStick2" parent="Scale" index="1"]
+visible = false
+
+[node name="ScaleEgg" parent="Scale" index="2"]
+visible = false
+
+[node name="ImovingRopes" parent="Scale" index="4"]
+visible = false
+
+[node name="LeftRope" parent="Scale" index="8"]
+visible = false
+
+[node name="Left Pan" parent="Scale" index="9"]
+position = Vector2(-24.5, 0)
+scale = Vector2(0.6, 0.6)
+
+[node name="PinJoint2D2" parent="Scale" index="10"]
+visible = false
+
+[node name="Arm" parent="Scale" index="11"]
+visible = false
+
+[node name="PinJoint2D" parent="Scale" index="15"]
+visible = false
+
+[node name="RightRope" parent="Scale" index="17"]
+visible = false
+
+[node name="Right Pan" parent="Scale" index="18"]
+position = Vector2(23.5, 0)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D2" parent="Scale" index="19"]
+visible = false
+
+[node name="Label" parent="Scale" index="20"]
+visible = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 1.3
+shadow_color = Color(0, 0, 0, 0.0117647)
+texture = ExtResource("4_h1dcu")
+texture_scale = 2.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -94.0
+offset_top = -40.0
+offset_right = 94.0
+offset_bottom = -8.0
+text = "Load Banlancer"
+label_settings = SubResource("LabelSettings_7gpnf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="BackGround" parent="." instance=ExtResource("4_d5reb")]
+z_index = -100
+position = Vector2(-112, -55)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.486275)
+z_index = -5
+position = Vector2(0, -30)
+scale = Vector2(0.15, 0.015625)
+texture = ExtResource("5_ciaid")
+
+[editable path="Scale"]

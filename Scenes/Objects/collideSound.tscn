@@ -4,6 +4,6 @@
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_wg043")
-volume_db = 20.0
-pitch_scale = 0.8
+volume_db = 18.0
+pitch_scale = 1.2
 attenuation = 1e-05

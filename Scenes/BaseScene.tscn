@@ -1,19 +1,19 @@
-[gd_scene load_steps=30 format=3 uid="uid://d175puobirwmb"]
+[gd_scene load_steps=35 format=3 uid="uid://d175puobirwmb"]
 
 [ext_resource type="Script" path="res://Scripts/LevelLoader.gd" id="1_77kdu"]
 [ext_resource type="PackedScene" uid="uid://ch3m2mmcgasgn" path="res://Scenes/tutorial_5.tscn" id="2_33h3x"]
 [ext_resource type="PackedScene" uid="uid://b4rep2wvxvbro" path="res://Scenes/tutorial_1.tscn" id="2_60umm"]
-[ext_resource type="PackedScene" uid="uid://i1qwhe5h610m" path="res://Scenes/level1.tscn" id="2_axeju"]
+[ext_resource type="PackedScene" uid="uid://758tbb5s8v5o" path="res://Scenes/level1.tscn" id="2_axeju"]
 [ext_resource type="PackedScene" uid="uid://eki41cpd8j8j" path="res://Scenes/tutorial_3.tscn" id="2_ggwrl"]
 [ext_resource type="PackedScene" uid="uid://dhv02ad633e2t" path="res://Scenes/splash.tscn" id="2_yxatj"]
 [ext_resource type="PackedScene" uid="uid://bc7cvmygfdbu8" path="res://Scenes/tutorial_2.tscn" id="3_qt3xl"]
 [ext_resource type="PackedScene" uid="uid://dg8kx41ymnch1" path="res://Scenes/end.tscn" id="4_va1b8"]
-[ext_resource type="PackedScene" uid="uid://5v60mi0cf0pv" path="res://Scenes/tutorial_4.tscn" id="5_ja1nf"]
 [ext_resource type="Material" uid="uid://cvpl1gtvouo7j" path="res://Materials/SawTransitionMaterial.tres" id="6_sjgwv"]
 [ext_resource type="Script" path="res://Scripts/CursorAnimation.gd" id="7_ai2me"]
 [ext_resource type="Texture2D" uid="uid://bic5txawa5ggs" path="res://Arts/Other/fade.png" id="7_p3dvf"]
 [ext_resource type="PackedScene" uid="uid://c6s0oioicsool" path="res://Scenes/tutorial_6.tscn" id="7_ynhnp"]
 [ext_resource type="Texture2D" uid="uid://b5rr2xeplvj1o" path="res://Arts/Cursor/Cursor idle.png" id="8_an3l7"]
+[ext_resource type="PackedScene" uid="uid://i1qwhe5h610m" path="res://Scenes/level2.tscn" id="9_b6xc1"]
 [ext_resource type="Texture2D" uid="uid://wutwl057gxv1" path="res://Arts/Cursor/Cursor hover over.png" id="9_nfdxu"]
 [ext_resource type="Texture2D" uid="uid://civ4hb362jfdu" path="res://Arts/Cursor/Cursor dragging1.png" id="10_j862j"]
 [ext_resource type="Texture2D" uid="uid://cb425e2j3ysse" path="res://Arts/Cursor/Cursor dragging2.png" id="11_gmxpc"]
@@ -22,23 +22,27 @@
 [ext_resource type="Texture2D" uid="uid://ccy7dt4ndmvx5" path="res://Arts/Cursor/Cursor dragging5.png" id="14_wtcis"]
 [ext_resource type="PackedScene" uid="uid://bd4b24t3l1fx" path="res://Scenes/back_ground.tscn" id="15_g8g2a"]
 [ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="16_3hmr0"]
-[ext_resource type="PackedScene" uid="uid://b8w38vqgssv0i" path="res://Scenes/countdown.tscn" id="21_bw2p7"]
 [ext_resource type="AudioStream" uid="uid://cegjlq4xlmm1q" path="res://Sounds/Hidden Fear (Short Loop).mp3" id="22_22gby"]
 [ext_resource type="Script" path="res://Scenes/MasterVolume.gd" id="25_sjcsn"]
 [ext_resource type="Texture2D" uid="uid://dn15ssxwtd1n7" path="res://Arts/Other/Volume.png" id="26_62dmo"]
 [ext_resource type="Texture2D" uid="uid://dqin3cvjs87ih" path="res://Arts/Other/Reset.png" id="27_fjeus"]
+[ext_resource type="FontFile" uid="uid://bl4y2v414l3gq" path="res://Resource/HerrfochTrash-nXMV.ttf" id="28_rq2xr"]
+[ext_resource type="Script" path="res://Scripts/CountDown.gd" id="29_jbukt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgp7w"]
+font_size = 35
 
 [sub_resource type="Animation" id="Animation_gxbty"]
 resource_name = "new_animation"
-length = 4.5
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Countdown:visible")
+tracks/0/path = NodePath("CanvasLayer:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.5),
+"times": PackedFloat32Array(0, 6.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -46,23 +50,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/path = NodePath("CanvasLayer/HSlider/Sprite2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/HSlider/Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.5),
+"times": PackedFloat32Array(0, 6.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -73,12 +65,61 @@ _data = {
 "new_animation": SubResource("Animation_gxbty")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_1doth"]
+font = ExtResource("28_rq2xr")
+font_size = 25
+
+[sub_resource type="Animation" id="Animation_4mynu"]
+resource_name = "5"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/CountDownText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../CanvasLayer/CountDownText:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../CanvasLayer/CountDownText:label_settings")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("LabelSettings_pgp7w"), SubResource("LabelSettings_1doth")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81dfv"]
+_data = {
+"5": SubResource("Animation_4mynu")
+}
+
 [node name="Root" type="Node2D"]
 
 [node name="LevelLoader" type="Node2D" parent="." node_paths=PackedStringArray("fadeSprite")]
 z_index = -20
 script = ExtResource("1_77kdu")
-levels = Array[PackedScene]([ExtResource("2_yxatj"), ExtResource("2_60umm"), ExtResource("3_qt3xl"), ExtResource("2_ggwrl"), ExtResource("5_ja1nf"), ExtResource("2_33h3x"), ExtResource("7_ynhnp"), ExtResource("2_axeju"), ExtResource("4_va1b8")])
+levels = Array[PackedScene]([ExtResource("2_yxatj"), ExtResource("2_60umm"), ExtResource("3_qt3xl"), ExtResource("2_ggwrl"), ExtResource("2_33h3x"), ExtResource("7_ynhnp"), ExtResource("2_axeju"), ExtResource("9_b6xc1"), ExtResource("4_va1b8")])
 fadeMat = Array[ShaderMaterial]([ExtResource("6_sjgwv")])
 fadeSprite = NodePath("../FadeInFadeOut")
 
@@ -110,9 +151,6 @@ layer_0/tile_data = PackedInt32Array(262137, 65536, 0, 262138, 65536, 0, 262139,
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
-[node name="Countdown" parent="." instance=ExtResource("21_bw2p7")]
-visible = false
-
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_22gby")
 volume_db = -20.0
@@ -120,7 +158,6 @@ pitch_scale = 0.8
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer"]
 anchors_preset = 1
@@ -152,10 +189,34 @@ offset_bottom = 40.0
 grow_horizontal = 0
 icon = ExtResource("27_fjeus")
 
+[node name="CountDownText" type="Label" parent="CanvasLayer" groups=["countdown"]]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5
+"
+label_settings = SubResource("LabelSettings_pgp7w")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "new_animation"
 libraries = {
 "": SubResource("AnimationLibrary_4gtjc")
+}
+
+[node name="Countdown" type="Node2D" parent="." node_paths=PackedStringArray("animPlayer", "label")]
+script = ExtResource("29_jbukt")
+animPlayer = NodePath("AnimationPlayer")
+label = NodePath("../CanvasLayer/CountDownText")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Countdown"]
+libraries = {
+"": SubResource("AnimationLibrary_81dfv")
 }
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer/HSlider" method="_on_value_changed"]

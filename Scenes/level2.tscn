@@ -1,62 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://758tbb5s8v5o"]
+[gd_scene load_steps=13 format=3 uid="uid://i1qwhe5h610m"]
 
-[ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="1_qwmnv"]
+[ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="2_r8ljl"]
+[ext_resource type="PackedScene" uid="uid://cjumqdexv0tln" path="res://Scenes/Objects/dragonSlayer.tscn" id="4_thc62"]
+[ext_resource type="PackedScene" uid="uid://cduo2ht5jqx0o" path="res://Scenes/Objects/Master Sword.tscn" id="5_13bng"]
+[ext_resource type="PackedScene" uid="uid://cp7io23fuu10v" path="res://Scenes/Objects/BusterSword.tscn" id="5_y4o0g"]
+[ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_1x3cw"]
+[ext_resource type="PackedScene" uid="uid://bufnpl1nhu7oy" path="res://Scenes/Objects/Sam's Gun.tscn" id="6_jl116"]
+[ext_resource type="PackedScene" uid="uid://ca1jqd5fl1x72" path="res://Scenes/Objects/Assualt Rifle.tscn" id="7_naqj5"]
+[ext_resource type="PackedScene" uid="uid://cg6c0ov6t7od0" path="res://Scenes/Objects/Chair.tscn" id="8_cjxfl"]
+[ext_resource type="PackedScene" uid="uid://bkid8j3n20h3e" path="res://Scenes/Objects/Toilet.tscn" id="9_wnecv"]
+[ext_resource type="PackedScene" uid="uid://cdu26e0rmbtni" path="res://Scenes/Objects/Umbrella.tscn" id="10_cphoa"]
+[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="11_0325w"]
+[ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="12_55wnc"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ap8b7"]
+[node name="Level2" type="Node2D"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62sd6"]
-size = Vector2(164.55, 4)
+[node name="Scale" parent="." instance=ExtResource("2_r8ljl")]
+position = Vector2(0, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3kyc"]
-size = Vector2(9.3625, 215.5)
+[node name="StaticBody2D2" parent="Scale" index="14"]
+position = Vector2(0, 28)
 
-[node name="Node2D" type="Node2D"]
+[node name="DragonSlayer" parent="." instance=ExtResource("4_thc62")]
+position = Vector2(102, -3)
+gravity_scale = 0.2
+linear_velocity = Vector2(0, -100)
 
-[node name="Scale" parent="." instance=ExtResource("1_qwmnv")]
-position = Vector2(0, -16)
+[node name="BusterSword" parent="." instance=ExtResource("5_y4o0g")]
+position = Vector2(-114, -5)
 
-[node name="Wall" type="RigidBody2D" parent="."]
-position = Vector2(2, 105)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 0)
+color = Color(0.980392, 0.972549, 0.890196, 1)
+energy = 1.4
+shadow_color = Color(0, 0, 0, 0.0117647)
+texture = ExtResource("6_1x3cw")
+texture_scale = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-shape = SubResource("RectangleShape2D_62sd6")
+[node name="Master Sword" parent="." instance=ExtResource("5_13bng")]
+position = Vector2(-114, 26)
 
-[node name="Wall2" type="RigidBody2D" parent="."]
-position = Vector2(-86, -16)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
+[node name="Sam\'s Gun" parent="." instance=ExtResource("6_jl116")]
+position = Vector2(-78, 43)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
-position = Vector2(0.318748, 49.25)
-shape = SubResource("RectangleShape2D_p3kyc")
+[node name="Assualt Rifle" parent="." instance=ExtResource("7_naqj5")]
+position = Vector2(-33, 39)
 
-[node name="Wall3" type="RigidBody2D" parent="."]
-position = Vector2(88, 30)
-collision_layer = 6
-collision_mask = 6
-mass = 10.0
-physics_material_override = SubResource("PhysicsMaterial_ap8b7")
-gravity_scale = 0.0
-continuous_cd = 1
-max_contacts_reported = 10
-freeze = true
+[node name="Chair" parent="." instance=ExtResource("8_cjxfl")]
+position = Vector2(3, 39)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_p3kyc")
+[node name="Toilet" parent="." instance=ExtResource("9_wnecv")]
+position = Vector2(38, 41)
+
+[node name="Umbrella2" parent="." instance=ExtResource("10_cphoa")]
+position = Vector2(63, 41)
+
+[node name="Weight 1kg" parent="." instance=ExtResource("11_0325w")]
+position = Vector2(100, 47)
+
+[node name="TileMap" parent="." groups=["wall"] instance=ExtResource("12_55wnc")]
+position = Vector2(-1, 33)
+layer_0/tile_data = PackedInt32Array(-262151, 393216, 0, -327674, 393216, 0)
 
 [editable path="Scale"]

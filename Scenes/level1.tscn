@@ -1,60 +1,52 @@
-[gd_scene load_steps=12 format=3 uid="uid://i1qwhe5h610m"]
+[gd_scene load_steps=10 format=3 uid="uid://758tbb5s8v5o"]
 
 [ext_resource type="PackedScene" uid="uid://tpk7kc2i4gsq" path="res://Scenes/scale.tscn" id="2_r8ljl"]
-[ext_resource type="PackedScene" uid="uid://cjumqdexv0tln" path="res://Scenes/Objects/dragonSlayer.tscn" id="4_thc62"]
 [ext_resource type="PackedScene" uid="uid://cduo2ht5jqx0o" path="res://Scenes/Objects/Master Sword.tscn" id="5_13bng"]
 [ext_resource type="PackedScene" uid="uid://cp7io23fuu10v" path="res://Scenes/Objects/BusterSword.tscn" id="5_y4o0g"]
 [ext_resource type="Texture2D" uid="uid://1yywcv2f1je4" path="res://Arts/LightShape/2d_lights_and_shadows_neutral_point_light.webp" id="6_1x3cw"]
 [ext_resource type="PackedScene" uid="uid://bufnpl1nhu7oy" path="res://Scenes/Objects/Sam's Gun.tscn" id="6_jl116"]
 [ext_resource type="PackedScene" uid="uid://ca1jqd5fl1x72" path="res://Scenes/Objects/Assualt Rifle.tscn" id="7_naqj5"]
 [ext_resource type="PackedScene" uid="uid://cg6c0ov6t7od0" path="res://Scenes/Objects/Chair.tscn" id="8_cjxfl"]
+[ext_resource type="PackedScene" uid="uid://cf4xsp8gy50p0" path="res://Scenes/tile_map.tscn" id="9_rbloy"]
 [ext_resource type="PackedScene" uid="uid://bkid8j3n20h3e" path="res://Scenes/Objects/Toilet.tscn" id="9_wnecv"]
-[ext_resource type="PackedScene" uid="uid://cdu26e0rmbtni" path="res://Scenes/Objects/Umbrella.tscn" id="10_cphoa"]
-[ext_resource type="PackedScene" uid="uid://dsyhmmvxevwih" path="res://Scenes/Objects/weight 1kg.tscn" id="11_0325w"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Scale" parent="." instance=ExtResource("2_r8ljl")]
-position = Vector2(0, -1)
+position = Vector2(0, 12)
 
-[node name="DragonSlayer" parent="." instance=ExtResource("4_thc62")]
-position = Vector2(-106, -31)
-gravity_scale = 0.2
-linear_velocity = Vector2(0, -100)
-
-[node name="BusterSword" parent="." instance=ExtResource("5_y4o0g")]
-position = Vector2(-114, -5)
+[node name="StaticBody2D2" parent="Scale" index="14"]
+position = Vector2(0, 25)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(2, -16)
+scale = Vector2(2, 2)
 color = Color(0.980392, 0.972549, 0.890196, 1)
 energy = 1.3
 shadow_color = Color(0, 0, 0, 0.0117647)
 texture = ExtResource("6_1x3cw")
 texture_scale = 2.0
 
-[node name="Master Sword" parent="." instance=ExtResource("5_13bng")]
-position = Vector2(-114, 26)
-
-[node name="Sam\'s Gun" parent="." instance=ExtResource("6_jl116")]
-position = Vector2(-78, 43)
-
-[node name="Assualt Rifle" parent="." instance=ExtResource("7_naqj5")]
-position = Vector2(-33, 39)
+[node name="BusterSword" parent="." instance=ExtResource("5_y4o0g")]
+position = Vector2(-106, 53)
 
 [node name="Chair" parent="." instance=ExtResource("8_cjxfl")]
-position = Vector2(3, 39)
+position = Vector2(-61, 49)
+
+[node name="Master Sword" parent="." instance=ExtResource("5_13bng")]
+position = Vector2(-11, 51)
 
 [node name="Toilet" parent="." instance=ExtResource("9_wnecv")]
-position = Vector2(38, 41)
+position = Vector2(30, 47)
 
-[node name="Umbrella2" parent="." instance=ExtResource("10_cphoa")]
-position = Vector2(63, 41)
+[node name="Assualt Rifle" parent="." instance=ExtResource("7_naqj5")]
+position = Vector2(79, 39)
 
-[node name="Weight 1kg" parent="." instance=ExtResource("11_0325w")]
-position = Vector2(100, 47)
+[node name="Sam\'s Gun" parent="." instance=ExtResource("6_jl116")]
+position = Vector2(112, 47)
 
-[node name="Weight 1kg2" parent="." instance=ExtResource("11_0325w")]
-position = Vector2(100, 30)
+[node name="TileMap" parent="." groups=["wall"] instance=ExtResource("9_rbloy")]
+position = Vector2(-1, 33)
+layer_0/tile_data = PackedInt32Array(-262151, 393216, 0, -327674, 393216, 0)
 
 [editable path="Scale"]
